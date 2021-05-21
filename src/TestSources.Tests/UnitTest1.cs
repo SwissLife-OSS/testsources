@@ -23,5 +23,12 @@ namespace TestSources.Tests
             Assert.NotNull(fi);
             Assert.NotNull(di);
         }
+
+        [Fact]
+        public void TestGenerators()
+        {
+            HelloWorldGenerated.HelloWorld.SayHello(); // calls Console.WriteLine("Hello World!") and then prints out syntax trees
+        }
     }
+
 }

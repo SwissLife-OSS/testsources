@@ -15,7 +15,7 @@ namespace TestSources
 
         /// <summary>
         /// Initializes a new instance of the TestSourceFile class, which acts as a wrapper
-        //     for a TestSources file.
+        ///     for a TestSources file.
         /// </summary>
         /// <param name="fileName"></param>
         /// <param name="parent"></param>
