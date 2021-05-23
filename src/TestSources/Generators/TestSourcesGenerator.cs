@@ -13,6 +13,10 @@ namespace TestSources.Generators
     public class TestSourcesGenerator : ISourceGenerator
     {
         const string _TestSourcesFolder = "__TestSources__";
+        private Dictionary<string, int> _classNames =
+            new Dictionary<string, int>();
+
+        private string _assemblyVersion = "0.0.0";
 
         public void Execute(GeneratorExecutionContext context)
         {
@@ -26,13 +30,13 @@ namespace TestSources.Generators
 
             // for each class we will use a similar concept as
             // https://github.com/thomasclaudiushuber/mvvmgen/blob/main/src/MvvmGen.SourceGenerators/ViewModelBuilder.cs
-
+            _assemblyVersion = GetType().Assembly.GetName().Version.ToString(3);
             var projectDirectory = ProjectHelpers.GetProjectPath();
             string TestSourcesPath = Path.Combine(projectDirectory, _TestSourcesFolder);
 
             if (Directory.Exists(TestSourcesPath))
             {
-                ProcessTestSourcesDirectory(TestSourcesPath);
+                ProcessTestSourcesDirectory(TestSourcesPath, 0, context);
             }
 
             // begin creating the source we'll inject into the users compilation
@@ -75,22 +79,26 @@ namespace TestSourcesGenerated
             context.AddSource("TestSourcesGenerator", SourceText.From(sourceBuilder.ToString(), Encoding.UTF8));
         }
 
-        private void ProcessTestSourcesDirectory(string testSourcesPath)
+        private void ProcessTestSourcesDirectory(string testSourcesPath, int level, GeneratorExecutionContext context)
         {
             // Process the list of files found in the directory.
             List<FileToGenerate> files = new List<FileToGenerate>();
             string[] fileEntries = Directory.GetFiles(testSourcesPath);
+            FileClassGenerator fileClassGenerator = new FileClassGenerator();
+
             foreach (string fileName in fileEntries)
             {
                 // Create the class corresponding to the file
-                files.Add(new FileToGenerate(fileName, null));
+                string className = SetClassName(fileName);
+                string fileClassCode = fileClassGenerator.Generate(className, fileName);
+                context.AddSource(className, SourceText.From(fileClassCode, Encoding.UTF8));
             }
 
             // Recurse into subdirectories of this directory.
             string[] subdirectoryEntries = Directory.GetDirectories(testSourcesPath);
             foreach (string subdirectory in subdirectoryEntries)
             {
-                ProcessTestSourcesDirectory(Path.Combine(testSourcesPath, Path.GetFileName(subdirectory)));
+                ProcessTestSourcesDirectory(Path.Combine(testSourcesPath, Path.GetFileName(subdirectory)), level + 1, context);
             }
 
             // Create the class corresponding to the directory - at this point all the files and
@@ -98,7 +106,31 @@ namespace TestSourcesGenerated
 
         }
 
-            public void Initialize(GeneratorInitializationContext context)
+        private string SetClassName(string fileNameWithPath)
+        {
+            string fileName = Path.GetFileName(fileNameWithPath);
+            var className = fileName;
+            if (Path.HasExtension(fileNameWithPath))
+            {
+                className = fileName.Replace('.', '_');
+            }
+
+            // see if it already exists and
+            if (_classNames.ContainsKey(className))
+            {
+                int index = _classNames[className] + 1;
+                _classNames[className] = index;
+                className += "_" + index.ToString();
+            }
+            else
+            {
+                _classNames.Add(className, 0);
+            }
+
+            return className;
+        }
+
+        public void Initialize(GeneratorInitializationContext context)
         {
             // No initialization required for this one
         }
