@@ -26,7 +26,8 @@ namespace TestSources
         public TestSourceDir(string path, ITestSourceDir parent)
         {
             _dirInfo = new DirectoryInfo(path);
-            Parent = parent;
+            _parent = parent;
+            //Parent = parent;
         }
 
         /// <summary>
@@ -39,7 +40,7 @@ namespace TestSources
         /// </summary>
         public string FullName => _dirInfo.FullName;
 
-        private ITestSourceDir _parent;
+        private ITestSourceDir? _parent;
 
         /// <summary>
         /// Gets the parent directory of a specified directory or file.
