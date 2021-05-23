@@ -31,16 +31,15 @@ namespace TestSources.Generators
             // for each class we will use a similar concept as
             // https://github.com/thomasclaudiushuber/mvvmgen/blob/main/src/MvvmGen.SourceGenerators/ViewModelBuilder.cs
             _assemblyVersion = GetType().Assembly.GetName().Version.ToString(3);
-            var projectDirectory = ProjectHelpers.GetProjectPath();
-            string TestSourcesPath = Path.Combine(projectDirectory, _TestSourcesFolder);
+            //var projectDirectory = ProjectHelpers.GetProjectPath();
+            //string TestSourcesPath = Path.Combine(projectDirectory, _TestSourcesFolder);
 
-            if (Directory.Exists(TestSourcesPath))
-            {
-                ProcessTestSourcesDirectory(TestSourcesPath, 0, context);
-            }
 
             // begin creating the source we'll inject into the users compilation
             var sourceBuilder = new StringBuilder(@"
+
+//  v2
+
 using System;
 
 namespace TestSourcesGenerated
@@ -51,6 +50,9 @@ namespace TestSourcesGenerated
         {
             Console.WriteLine(""Exploration of Test Sources!"");
 ");
+
+            sourceBuilder.AppendLine($@"// AssemblyVersion is: {_assemblyVersion} ");
+            //sourceBuilder.AppendLine($@"// projectDirectory is: {TestSourcesPath} ");
 
             sourceBuilder.AppendLine($@"Console.WriteLine(@""Exploring context.AdditionalFiles"");");
             foreach (AdditionalText contextAdditionalFile in context.AdditionalFiles)
@@ -77,6 +79,15 @@ namespace TestSourcesGenerated
 
             // inject the created source into the users compilation
             context.AddSource("TestSourcesGenerator", SourceText.From(sourceBuilder.ToString(), Encoding.UTF8));
+
+
+            // Real code
+
+            //if (Directory.Exists(TestSourcesPath))
+            //{
+            //    ProcessTestSourcesDirectory(TestSourcesPath, 0, context);
+            //}
+
         }
 
         private void ProcessTestSourcesDirectory(string testSourcesPath, int level, GeneratorExecutionContext context)

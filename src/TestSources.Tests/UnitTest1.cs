@@ -28,6 +28,7 @@ namespace TestSources.Tests
         public void TestGenerators()
         {
             HelloWorldGenerated.HelloWorld.SayHello(); // calls Console.WriteLine("Hello World!") and then prints out syntax trees
+
             TestSourcesGenerated.TestSources.ExploreTestSources();
         }
     }
