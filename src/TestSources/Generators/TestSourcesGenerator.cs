@@ -6,13 +6,15 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Text;
 using TestSources.Helpers;
 using TestSources.Model;
+using System.Diagnostics;
+using System.Linq;
 
 namespace TestSources.Generators
 {
     [Generator]
     public class TestSourcesGenerator : ISourceGenerator
     {
-        const string _TestSourcesFolder = "__TestSources__";
+        const string _TestSourcesFolder = "__TestSourcesX__";
         private Dictionary<string, int> _classNames =
             new Dictionary<string, int>();
 
@@ -31,14 +33,12 @@ namespace TestSources.Generators
             // for each class we will use a similar concept as
             // https://github.com/thomasclaudiushuber/mvvmgen/blob/main/src/MvvmGen.SourceGenerators/ViewModelBuilder.cs
             _assemblyVersion = GetType().Assembly.GetName().Version.ToString(3);
-            //var projectDirectory = ProjectHelpers.GetProjectPath();
-            //string TestSourcesPath = Path.Combine(projectDirectory, _TestSourcesFolder);
             var NumAdditionalFiles = context.AdditionalFiles.Length.ToString();
 
             // begin creating the source we'll inject into the users compilation
             var sourceBuilder = new StringBuilder(@"
 
-//  v06
+//  v10
 
 using System;
 
@@ -50,16 +50,37 @@ namespace TestSourcesGenerated
         {
             Console.WriteLine(""Exploration of Test Sources!"");
 ");
-            sourceBuilder.AppendLine($@"// TestSources Generator version 0.1.5");
-            sourceBuilder.AppendLine($@"// Detected {NumAdditionalFiles} files under {_TestSourcesFolder}.");
-
-            //sourceBuilder.AppendLine($@"// projectDirectory is: {TestSourcesPath} ");
+            sourceBuilder.AppendLine($@"// TestSources Generator version 0.1.9");
+            sourceBuilder.AppendLine($@"// Detected {NumAdditionalFiles} Additional files.");
+            sourceBuilder.AppendLine($@"// The TestSources directory is: {_TestSourcesFolder} ");
             sourceBuilder.AppendLine($@" ");
-            sourceBuilder.AppendLine($@"Console.WriteLine(@""Exploring context.AdditionalFiles"");");
-            foreach (AdditionalText contextAdditionalFile in context.AdditionalFiles)
+            sourceBuilder.AppendLine($@"// Obtaining the {_TestSourcesFolder} full path. ");
+            var firstFileInTestSources = context.AdditionalFiles.First().Path;
+            DirectoryInfo testSourcesDirectory = GetDirectoryInfoFromFolderName(
+                _TestSourcesFolder,
+                firstFileInTestSources);
+            if (testSourcesDirectory is not null)
             {
-                sourceBuilder.AppendLine($@"Console.WriteLine(@"" - {contextAdditionalFile.Path}"");");
+                // Check
+                sourceBuilder.AppendLine($@"// Its parent directory is {testSourcesDirectory.Name}. ");
+                sourceBuilder.AppendLine($@"// With full directory {testSourcesDirectory.FullName}. ");
+                sourceBuilder.AppendLine($@" ");
+                sourceBuilder.AppendLine($@"Console.WriteLine(@""Exploring context.AdditionalFiles"");");
+                foreach (AdditionalText contextAdditionalFile in context.AdditionalFiles)
+                {
+                    sourceBuilder.AppendLine($@"Console.WriteLine(@"" - {contextAdditionalFile.Path}"");");
+                }
             }
+            else
+            {
+                sourceBuilder.AppendLine($@"// The {_TestSourcesFolder} folder could not be found." );
+                sourceBuilder.AppendLine($@"// it can be that the folder was not added to additional files." );
+                sourceBuilder.AppendLine($@"// To do so, edit the prj project file and add the following: ");
+                sourceBuilder.AppendLine($@"// < ItemGroup >");
+                sourceBuilder.AppendLine($@"//    < AdditionalFiles Include = '__TestSources__\**' />");
+                sourceBuilder.AppendLine($@"// </ ItemGroup >");
+            }
+
             sourceBuilder.AppendLine($@" ");
 
             // finish creating the source to inject
@@ -79,6 +100,19 @@ namespace TestSourcesGenerated
             //    ProcessTestSourcesDirectory(TestSourcesPath, 0, context);
             //}
 
+        }
+
+        private DirectoryInfo GetDirectoryInfoFromFolderName(string testSourcesFolder, string firstFileInTestSources)
+        {
+            FileInfo fi = new FileInfo(firstFileInTestSources);
+            DirectoryInfo di = fi.Directory;
+
+            while (di is not null && di.Name != testSourcesFolder)
+            {
+                di = di.Parent;
+            } 
+
+            return di;
         }
 
         private void ProcessTestSourcesDirectory(string testSourcesPath, int level, GeneratorExecutionContext context)
@@ -134,7 +168,15 @@ namespace TestSourcesGenerated
 
         public void Initialize(GeneratorInitializationContext context)
         {
-            // No initialization required for this one
+            // Enabling debugging "hack" for source generator
+            // how-to here: https://nicksnettravels.builttoroam.com/debug-code-gen/
+//#if DEBUG
+//            if (!Debugger.IsAttached)
+//            {
+//                Debugger.Launch();
+//            }
+//#endif
+            Debug.WriteLine("Initalize code generator");
         }
     }
 }

@@ -27,8 +27,14 @@ namespace TestSources.Tests
         [Fact]
         public void TestGenerators()
         {
-            HelloWorldGenerated.HelloWorld.SayHello(); // calls Console.WriteLine("Hello World!") and then prints out syntax trees
+            // Enable this just to check that Source Generators works
+            // Important: needs uncommenting in TestSources too...
+            // HelloWorldGenerated.HelloWorld.SayHello(); 
+        }
 
+        [Fact]
+        public void TestSourcesGeneration()
+        {
             TestSourcesGenerated.TestSources.ExploreTestSources();
         }
     }
