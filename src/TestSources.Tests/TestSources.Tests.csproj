@@ -20,6 +20,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <AdditionalFiles Include="__TestSources__\**"  />    
+  </ItemGroup>
+  
+  <ItemGroup>
     <ProjectReference Include="..\TestSources\TestSources.csproj"
                       OutputItemType="Analyzer"
                       ReferenceOutputAssembly="true" />

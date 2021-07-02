@@ -33,12 +33,12 @@ namespace TestSources.Generators
             _assemblyVersion = GetType().Assembly.GetName().Version.ToString(3);
             //var projectDirectory = ProjectHelpers.GetProjectPath();
             //string TestSourcesPath = Path.Combine(projectDirectory, _TestSourcesFolder);
-
+            var NumAdditionalFiles = context.AdditionalFiles.Length.ToString();
 
             // begin creating the source we'll inject into the users compilation
             var sourceBuilder = new StringBuilder(@"
 
-//  v2
+//  v06
 
 using System;
 
@@ -50,26 +50,17 @@ namespace TestSourcesGenerated
         {
             Console.WriteLine(""Exploration of Test Sources!"");
 ");
+            sourceBuilder.AppendLine($@"// TestSources Generator version 0.1.5");
+            sourceBuilder.AppendLine($@"// Detected {NumAdditionalFiles} files under {_TestSourcesFolder}.");
 
-            sourceBuilder.AppendLine($@"// AssemblyVersion is: {_assemblyVersion} ");
             //sourceBuilder.AppendLine($@"// projectDirectory is: {TestSourcesPath} ");
-
+            sourceBuilder.AppendLine($@" ");
             sourceBuilder.AppendLine($@"Console.WriteLine(@""Exploring context.AdditionalFiles"");");
             foreach (AdditionalText contextAdditionalFile in context.AdditionalFiles)
             {
                 sourceBuilder.AppendLine($@"Console.WriteLine(@"" - {contextAdditionalFile.Path}"");");
-
             }
-
-            // using the context, get a list of syntax trees in the users compilation
-            IEnumerable<SyntaxTree> syntaxTrees = context.Compilation.SyntaxTrees;
-
-            sourceBuilder.AppendLine($@"Console.WriteLine(@""Exploring context.FilePath"");");
-            // add the filepath of each tree to the class we're building
-            foreach (SyntaxTree tree in syntaxTrees)
-            {
-                sourceBuilder.AppendLine($@"Console.WriteLine(@"" - {tree.FilePath}"");");
-            }
+            sourceBuilder.AppendLine($@" ");
 
             // finish creating the source to inject
             sourceBuilder.Append(@"
