@@ -38,8 +38,7 @@ namespace TestSources.Generators
             // begin creating the source we'll inject into the users compilation
             var sourceBuilder = new StringBuilder(@"
 
-//  v10
-
+// v11
 using System;
 
 namespace TestSourcesGenerated
@@ -50,11 +49,12 @@ namespace TestSourcesGenerated
         {
             Console.WriteLine(""Exploration of Test Sources!"");
 ");
-            sourceBuilder.AppendLine($@"// TestSources Generator version 0.1.9");
-            sourceBuilder.AppendLine($@"// Detected {NumAdditionalFiles} Additional files.");
-            sourceBuilder.AppendLine($@"// The TestSources directory is: {_TestSourcesFolder} ");
+            string ident = "            ";
+            sourceBuilder.AppendLine(ident + $@"// TestSources Generator version 0.1.10");
+            sourceBuilder.AppendLine(ident + $@"// Detected {NumAdditionalFiles} Additional files.");
+            sourceBuilder.AppendLine(ident + $@"// The TestSources directory is: {_TestSourcesFolder} ");
             sourceBuilder.AppendLine($@" ");
-            sourceBuilder.AppendLine($@"// Obtaining the {_TestSourcesFolder} full path. ");
+            sourceBuilder.AppendLine(ident + $@"// Obtaining the {_TestSourcesFolder} full path. ");
             var firstFileInTestSources = context.AdditionalFiles.First().Path;
             DirectoryInfo testSourcesDirectory = GetDirectoryInfoFromFolderName(
                 _TestSourcesFolder,
@@ -62,23 +62,23 @@ namespace TestSourcesGenerated
             if (testSourcesDirectory is not null)
             {
                 // Check
-                sourceBuilder.AppendLine($@"// Its parent directory is {testSourcesDirectory.Name}. ");
-                sourceBuilder.AppendLine($@"// With full directory {testSourcesDirectory.FullName}. ");
+                sourceBuilder.AppendLine(ident + $@"// Its parent directory is {testSourcesDirectory.Name}. ");
+                sourceBuilder.AppendLine(ident + $@"// With full directory {testSourcesDirectory.FullName}. ");
                 sourceBuilder.AppendLine($@" ");
-                sourceBuilder.AppendLine($@"Console.WriteLine(@""Exploring context.AdditionalFiles"");");
+                sourceBuilder.AppendLine(ident + $@"Console.WriteLine(@""Exploring context.AdditionalFiles"");");
                 foreach (AdditionalText contextAdditionalFile in context.AdditionalFiles)
                 {
-                    sourceBuilder.AppendLine($@"Console.WriteLine(@"" - {contextAdditionalFile.Path}"");");
+                    sourceBuilder.AppendLine(ident + $@"Console.WriteLine(@"" - {contextAdditionalFile.Path}"");");
                 }
             }
             else
             {
-                sourceBuilder.AppendLine($@"// The {_TestSourcesFolder} folder could not be found." );
-                sourceBuilder.AppendLine($@"// it can be that the folder was not added to additional files." );
-                sourceBuilder.AppendLine($@"// To do so, edit the prj project file and add the following: ");
-                sourceBuilder.AppendLine($@"// < ItemGroup >");
-                sourceBuilder.AppendLine($@"//    < AdditionalFiles Include = '__TestSources__\**' />");
-                sourceBuilder.AppendLine($@"// </ ItemGroup >");
+                sourceBuilder.AppendLine(ident + $@"// The {_TestSourcesFolder} folder could not be found." );
+                sourceBuilder.AppendLine(ident + $@"// it can be that the folder was not added to additional files." );
+                sourceBuilder.AppendLine(ident + $@"// To do so, edit the prj project file and add the following: ");
+                sourceBuilder.AppendLine(ident + $@"// < ItemGroup >");
+                sourceBuilder.AppendLine(ident + $@"//    < AdditionalFiles Include = '__TestSources__\**' />");
+                sourceBuilder.AppendLine(ident + $@"// </ ItemGroup >");
             }
 
             sourceBuilder.AppendLine($@" ");
