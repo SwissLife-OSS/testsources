@@ -14,7 +14,7 @@ namespace TestSources.Generators
     [Generator]
     public class TestSourcesGenerator : ISourceGenerator
     {
-        const string _TestSourcesFolder = "__TestSourcesX__";
+        const string _TestSourcesFolder = "__TestSources__";
         private Dictionary<string, int> _classNames =
             new Dictionary<string, int>();
 
@@ -61,6 +61,11 @@ namespace TestSourcesGenerated
                 firstFileInTestSources);
             if (testSourcesDirectory is not null)
             {
+                //if (Directory.Exists(testSourcesDirectory.FullName))
+                //{
+                //    ProcessTestSourcesDirectory(testSourcesDirectory.FullName, 0, context);
+                //}
+
                 // Check
                 sourceBuilder.AppendLine(ident + $@"// Its parent directory is {testSourcesDirectory.Name}. ");
                 sourceBuilder.AppendLine(ident + $@"// With full directory {testSourcesDirectory.FullName}. ");
@@ -170,12 +175,12 @@ namespace TestSourcesGenerated
         {
             // Enabling debugging "hack" for source generator
             // how-to here: https://nicksnettravels.builttoroam.com/debug-code-gen/
-//#if DEBUG
-//            if (!Debugger.IsAttached)
-//            {
-//                Debugger.Launch();
-//            }
-//#endif
+#if DEBUG
+            if (!Debugger.IsAttached)
+            {
+                Debugger.Launch();
+            }
+#endif
             Debug.WriteLine("Initalize code generator");
         }
     }
