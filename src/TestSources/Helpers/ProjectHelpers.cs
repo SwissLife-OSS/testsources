@@ -28,7 +28,5 @@ namespace TestSources.Helpers
 
             return Directory.GetFiles(projectDirectory, "*.csproj").FirstOrDefault();
         }
-
-
     }
 }

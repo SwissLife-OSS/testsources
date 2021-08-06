@@ -61,10 +61,10 @@ namespace TestSourcesGenerated
                 firstFileInTestSources);
             if (testSourcesDirectory is not null)
             {
-                //if (Directory.Exists(testSourcesDirectory.FullName))
-                //{
-                //    ProcessTestSourcesDirectory(testSourcesDirectory.FullName, 0, context);
-                //}
+                if (Directory.Exists(testSourcesDirectory.FullName))
+                {
+                    //ProcessTestSourcesDirectory(testSourcesDirectory.FullName, 0, context);
+                }
 
                 // Check
                 sourceBuilder.AppendLine(ident + $@"// Its parent directory is {testSourcesDirectory.Name}. ");
@@ -96,7 +96,6 @@ namespace TestSourcesGenerated
 
             // inject the created source into the users compilation
             context.AddSource("TestSourcesGenerator", SourceText.From(sourceBuilder.ToString(), Encoding.UTF8));
-
 
             // Real code
 
