@@ -35,7 +35,9 @@ namespace TestSources.Tests
         [Fact]
         public void TestSourcesGeneration()
         {
-            TestSourcesGenerated.TestSources.ExploreTestSources();
+            //TestSourcesGenerated.TestSources.ExploreTestSources();
+            TestSources ts = new TestSources();
+            TestSources.TestSources.ExploreTestSources();
         }
     }
 

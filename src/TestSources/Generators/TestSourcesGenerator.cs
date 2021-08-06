@@ -41,9 +41,9 @@ namespace TestSources.Generators
 // v11
 using System;
 
-namespace TestSourcesGenerated
+namespace TestSources
 {
-    public static class TestSources
+    public partial class TestSources 
     {
         public static void ExploreTestSources() 
         {
@@ -182,12 +182,12 @@ namespace TestSourcesGenerated
         {
             // Enabling debugging "hack" for source generator
             // how-to here: https://nicksnettravels.builttoroam.com/debug-code-gen/
-#if DEBUG
-            if (!Debugger.IsAttached)
-            {
-                Debugger.Launch();
-            }
-#endif
+////#if DEBUG
+////            if (!Debugger.IsAttached)
+////            {
+////                Debugger.Launch();
+////            }
+////#endif
             Debug.WriteLine("Initalize code generator");
         }
     }
