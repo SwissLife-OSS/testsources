@@ -63,7 +63,7 @@ namespace TestSourcesGenerated
             {
                 if (Directory.Exists(testSourcesDirectory.FullName))
                 {
-                    //ProcessTestSourcesDirectory(testSourcesDirectory.FullName, 0, context);
+                    //  ProcessTestSourcesDirectory(testSourcesDirectory.FullName, 0, context);
                 }
 
                 // Check
@@ -98,15 +98,23 @@ namespace TestSourcesGenerated
             context.AddSource("TestSourcesGenerator", SourceText.From(sourceBuilder.ToString(), Encoding.UTF8));
 
             // Real code
+            if (testSourcesDirectory is not null)
+            {
+                if (Directory.Exists(testSourcesDirectory.FullName))
+                {
+                    //  ProcessTestSourcesDirectory(testSourcesDirectory.FullName, 0, context);
+                }
+            }
 
-            //if (Directory.Exists(TestSourcesPath))
-            //{
-            //    ProcessTestSourcesDirectory(TestSourcesPath, 0, context);
-            //}
 
-        }
+                //if (Directory.Exists(TestSourcesPath))
+                //{
+                //    ProcessTestSourcesDirectory(TestSourcesPath, 0, context);
+                //}
 
-        private DirectoryInfo GetDirectoryInfoFromFolderName(string testSourcesFolder, string firstFileInTestSources)
+            }
+
+            private DirectoryInfo GetDirectoryInfoFromFolderName(string testSourcesFolder, string firstFileInTestSources)
         {
             FileInfo fi = new FileInfo(firstFileInTestSources);
             DirectoryInfo di = fi.Directory;
@@ -138,7 +146,7 @@ namespace TestSourcesGenerated
             string[] subdirectoryEntries = Directory.GetDirectories(testSourcesPath);
             foreach (string subdirectory in subdirectoryEntries)
             {
-                ProcessTestSourcesDirectory(Path.Combine(testSourcesPath, Path.GetFileName(subdirectory)), level + 1, context);
+               // ProcessTestSourcesDirectory(Path.Combine(testSourcesPath, Path.GetFileName(subdirectory)), level + 1, context);
             }
 
             // Create the class corresponding to the directory - at this point all the files and
