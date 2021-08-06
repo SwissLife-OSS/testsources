@@ -102,7 +102,7 @@ namespace TestSourcesGenerated
             {
                 if (Directory.Exists(testSourcesDirectory.FullName))
                 {
-                    //  ProcessTestSourcesDirectory(testSourcesDirectory.FullName, 0, context);
+                    ProcessTestSourcesDirectory(testSourcesDirectory.FullName, 0, context);
                 }
             }
 
