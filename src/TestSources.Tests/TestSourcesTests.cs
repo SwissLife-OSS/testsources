@@ -3,11 +3,19 @@ using Xunit;
 
 namespace TestSources.Tests
 {
-    public class UnitTest1
+    public class TestSourcesTests
     {
         [Fact]
-        public void Test1()
+        public void ExistingFile_CanBeFound()
         {
+            // arrange
+            TestSources ts = new TestSources();
+
+            //act
+
+
+
+            //assert
             FileInfo fi = new FileInfo("C:\\GIT\testsources\\src\\TestSources.Tests\\__TestSources__\\sub01\\SubTextFile01.txt");
             DirectoryInfo di = new DirectoryInfo("C:\\GIT\\testsources\\src\\TestSources.Tests\\__TestSources__");
             //FileSystemInfo fsi = new FileSystemInfo();
@@ -23,22 +31,5 @@ namespace TestSources.Tests
             Assert.NotNull(fi);
             Assert.NotNull(di);
         }
-
-        [Fact]
-        public void TestGenerators()
-        {
-            // Enable this just to check that Source Generators works
-            // Important: needs uncommenting in TestSources too...
-            // HelloWorldGenerated.HelloWorld.SayHello(); 
-        }
-
-        [Fact]
-        public void TestSourcesGeneration()
-        {
-            //TestSourcesGenerated.TestSources.ExploreTestSources();
-            TestSources ts = new TestSources();
-            TestSources.TestSources.ExploreTestSources();
-        }
     }
-
 }

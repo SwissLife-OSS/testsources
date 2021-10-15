@@ -9,7 +9,7 @@ using TestSources.Interfaces;
 namespace TestSources
 {
     /// <summary>
-    /// Provides properties and instance methods for managing a TestSource file
+    /// Provides properties and instance methods for managing a TestSource directory
     /// </summary>
     public class TestSourceDir : ITestSourceDir
     {
@@ -27,7 +27,6 @@ namespace TestSources
         {
             _dirInfo = new DirectoryInfo(path);
             _parent = parent;
-            //Parent = parent;
         }
 
         /// <summary>
@@ -55,7 +54,7 @@ namespace TestSources
             {
                 if (_dirInfo.Parent is not null && _dirInfo.Parent.FullName != value.FullName)
                 {
-                    throw new ArgumentException("The directory of the file and the parent do not match.");
+                    throw new ArgumentException("The parent's directory fullname and the value do not match.");
                 }
 
                 _parent = value;

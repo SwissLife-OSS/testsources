@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using TestSources.Interfaces;
 
@@ -12,7 +13,8 @@ namespace TestSources
     /// </summary>
     public partial class TestSources : TestSourceDir
     {
-        private const string TestSourcesFolder = "__testsources__";
+        private const string DefaultTestSourcesFolder = "__testsources__";
+        private static bool _fileSystemScanned = false;
 
         private static string FullPath
         {
@@ -20,15 +22,19 @@ namespace TestSources
             {
                 var projectDirectory = GetProjectPath();
 
-                return Path.Combine(projectDirectory, TestSourcesFolder);
+                return Path.Combine(projectDirectory, DefaultTestSourcesFolder);
             }
         }
-        
+
+        private IEnumerable<ITestSourceItem> _filesAndFolders;
+        public IEnumerable<ITestSourceItem> FilesAndFolders { get; set; }
+
         /// <summary>
         /// Constructor of the TestSources Folder 
         /// </summary>
         public TestSources() : base(FullPath, null)
         {
+            ScanFileSystem();
         }
 
         /// <summary>
@@ -36,10 +42,14 @@ namespace TestSources
         ///  </summary>
         internal void ScanFileSystem()
         {
+            // don't repeat!
+            if (_fileSystemScanned == true)
+                return;
+
             //ChildItems.Add();
             if (Directory.Exists(this.FullName))
             {
-                //ProcessTestSourcesDir(this.RootFolder, Files);
+                ProcessTestSourcesDir(this, this.ChildItems);
             }
             else
             {
@@ -48,38 +58,35 @@ namespace TestSources
             }
         }
 
-        private void ProcessTestSourcesDir(ITestSourceItem parentRoot, IEnumerable<ITestSourceItem> Files)
+        private void ProcessTestSourcesDir(ITestSourceDir parentRoot, IEnumerable<ITestSourceItem> childItems)
         {
-            // Process the list of files found in the directory.
-            //string[] fileEntries = Directory.GetFiles(parentRoot.Path);
-            //foreach (string fileName in fileEntries)
-            //{
-            //    var TestSourceFile = new TestSourcesItem(
-            //        parentRoot,
-            //        Path.GetFileName(fileName),
-            //        Path.Combine(parentRoot.Path, fileName),
-            //        TestSourceType.file);
-            //    (parentRoot.Items as List<ITestSourcesItem>).Add(TestSourceFile);
-            //    (Files as List<ITestSourcesItem>).Add(TestSourceFile);
-            //    (FilesAndFolders as List<ITestSourcesItem>).Add(TestSourceFile);
-            //}
+            // Process the list of files found in the parentRoot directory.
+            string[] fileEntries = Directory.GetFiles(parentRoot.FullName);
+            foreach (string fileName in fileEntries)
+            {
+                // Add all files
+                var TestSourceFile = new TestSourceFile(fileName, parentRoot);
+                (childItems as List<ITestSourceItem>).Add(TestSourceFile);
 
-            //// Recurse into subdirectories of this directory.
-            //string[] subdirectoryEntries = Directory.GetDirectories(parentRoot.Path);
-            //foreach (string subdirectory in subdirectoryEntries)
-            //{
-            //    var TestSourceSubFolder = new TestSourcesItem(
-            //        parentRoot,
-            //        Path.GetFileName(subdirectory),
-            //        Path.Combine(parentRoot.Path, Path.GetFileName(subdirectory)),
-            //        TestSourceType.folder);
-            //    (parentRoot.Items as List<ITestSourcesItem>).Add(TestSourceSubFolder);
-            //    (FilesAndFolders as List<ITestSourcesItem>).Add(TestSourceSubFolder);
+                // We add all the files to the full list, where all the files & folders
+                // from the current folder and subfolder will be placed
+                (FilesAndFolders as List<ITestSourceItem>).Add(TestSourceFile);
+            }
 
-            //    ProcessTestSourcesDirectory(TestSourceSubFolder, Files);
-            //}
+            // Recurse into subdirectories of this directory.
+            string[] subdirectories = Directory.GetDirectories(parentRoot.FullName);
+            foreach (string subdirectory in subdirectories)
+            {
+                var testSourceSubDir = new TestSourceDir(subdirectory, parentRoot);
+                (childItems as List<ITestSourceItem>).Add(testSourceSubDir); // adding directories too to the ChildItems
+
+                // We add all the files to the full list, where all the files & folders
+                // from the current folder and subfolder will be placed
+                (FilesAndFolders as List<ITestSourceItem>).Add(testSourceSubDir);
+
+                ProcessTestSourcesDir(testSourceSubDir, testSourceSubDir.ChildItems);
+            }
         }
-
 
         private static string GetProjectPath()
         {
@@ -87,6 +94,53 @@ namespace TestSources
             var projectDirectory = Directory.GetParent(workingDirectory)?.Parent.Parent.FullName;
 
             return projectDirectory;
+        }
+
+
+        //TODO: Make those extension methods for ITestSourceItem so we can do this from any directory 
+        public ITestSourceItem GetByName(string name, bool includeSubdirs = true)
+        {
+            ITestSourceItem sourcesItem = GetFiles(includeSubdirs, typeof(ITestSourceItem))
+                    .Where(s => s.Name == name)
+                    .FirstOrDefault();
+
+            return sourcesItem;
+        }
+
+        private IEnumerable<ITestSourceItem> GetFiles(bool includeSubDirectories, Type type)
+        {
+            IEnumerable<ITestSourceItem> files;
+            if (includeSubDirectories)
+            {
+                files = this.FilesAndFolders;
+            }
+            else
+            {
+                files = this.ChildItems;
+            }
+
+            IEnumerable<ITestSourceItem> filesByType = files
+                .Where(x => x.GetType() == type);
+
+            return filesByType;
+        }
+
+        public ITestSourceItem GetFileByName(string name, bool includeSubdirs = true)
+        {
+            ITestSourceItem sourcesItem = GetFiles(includeSubdirs, typeof(TestSourceFile))
+                .Where(s => s.Name == name)
+                .FirstOrDefault();
+
+            return sourcesItem;
+        }
+
+        public ITestSourceItem GetFolderByName(string name, bool includeSubdirs = true)
+        {
+            ITestSourceItem sourcesItem = GetFiles(includeSubdirs, typeof(ITestSourceDir))
+                .Where(s => s.Name == name)
+                .FirstOrDefault();
+
+            return sourcesItem;
         }
     }
 }
