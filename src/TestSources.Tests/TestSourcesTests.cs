@@ -1,5 +1,7 @@
 using System.IO;
+using Snapshooter.Xunit;
 using Xunit;
+using FluentAssertions;
 
 namespace TestSources.Tests
 {
@@ -30,6 +32,20 @@ namespace TestSources.Tests
 
             Assert.NotNull(fi);
             Assert.NotNull(di);
+        }
+
+
+        [Fact]
+        public void TestSources_Constructor_works()
+        {
+            // Arrange
+            TestSources testSources = new TestSources();
+
+            // Act
+            // Assert
+            testSources.FilesAndFolders.MatchSnapshot();
+            testSources.Name.Should().Be("__Testsources__");
+            testSources.Parent.Should().BeNull();
         }
     }
 }

@@ -11,7 +11,7 @@ namespace TestSources
     /// Gets the root TestSources folder and enables access to its files, folders
     /// methods and properties.
     /// </summary>
-    public partial class TestSources : TestSourceDir
+    public partial class TestSources : TestSourceDir, ITestSourceDir
     {
         private const string DefaultTestSourcesFolder = "__testsources__";
         private static bool _fileSystemScanned = false;
@@ -49,6 +49,7 @@ namespace TestSources
             //ChildItems.Add();
             if (Directory.Exists(this.FullName))
             {
+                this.FilesAndFolders = new List<ITestSourceItem>();
                 ProcessTestSourcesDir(this, this.ChildItems);
             }
             else

@@ -11,7 +11,7 @@ using System.Linq;
 
 namespace TestSources.Generators
 {
-    [Generator]
+    //[Generator]
     public class TestSourcesGenerator : ISourceGenerator
     {
         const string _TestSourcesFolder = "__TestSources__";

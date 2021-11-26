@@ -1,0 +1,366 @@
+﻿[
+  {
+    "Name": "BinFile01.rar",
+    "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\BinFile01.rar",
+    "Parent": [
+      {
+        "Name": "BinFile02.rar",
+        "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\BinFile02.rar"
+      },
+      {
+        "Name": "TextFile01.txt",
+        "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\TextFile01.txt"
+      },
+      {
+        "Name": "TextFile02.txt",
+        "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\TextFile02.txt"
+      },
+      [
+        {
+          "Name": "SomeJson.json",
+          "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\FileContentTests\\SomeJson.json"
+        },
+        {
+          "Name": "SomeJson.rar",
+          "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\FileContentTests\\SomeJson.rar"
+        }
+      ],
+      [
+        {
+          "Name": "SubBinFile01.rar",
+          "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\SubBinFile01.rar"
+        },
+        {
+          "Name": "SubTextFile01.txt",
+          "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\SubTextFile01.txt"
+        },
+        {
+          "Name": "SubTextFile02.txt",
+          "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\SubTextFile02.txt"
+        },
+        [
+          {
+            "Name": "Sub2FolderBinFile.rar",
+            "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\sub02\\Sub2FolderBinFile.rar"
+          },
+          {
+            "Name": "Sub2TextFile.txt",
+            "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\sub02\\Sub2TextFile.txt"
+          }
+        ]
+      ]
+    ]
+  },
+  {
+    "Name": "BinFile02.rar",
+    "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\BinFile02.rar",
+    "Parent": [
+      {
+        "Name": "BinFile01.rar",
+        "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\BinFile01.rar"
+      },
+      {
+        "Name": "TextFile01.txt",
+        "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\TextFile01.txt"
+      },
+      {
+        "Name": "TextFile02.txt",
+        "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\TextFile02.txt"
+      },
+      [
+        {
+          "Name": "SomeJson.json",
+          "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\FileContentTests\\SomeJson.json"
+        },
+        {
+          "Name": "SomeJson.rar",
+          "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\FileContentTests\\SomeJson.rar"
+        }
+      ],
+      [
+        {
+          "Name": "SubBinFile01.rar",
+          "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\SubBinFile01.rar"
+        },
+        {
+          "Name": "SubTextFile01.txt",
+          "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\SubTextFile01.txt"
+        },
+        {
+          "Name": "SubTextFile02.txt",
+          "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\SubTextFile02.txt"
+        },
+        [
+          {
+            "Name": "Sub2FolderBinFile.rar",
+            "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\sub02\\Sub2FolderBinFile.rar"
+          },
+          {
+            "Name": "Sub2TextFile.txt",
+            "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\sub02\\Sub2TextFile.txt"
+          }
+        ]
+      ]
+    ]
+  },
+  {
+    "Name": "TextFile01.txt",
+    "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\TextFile01.txt",
+    "Parent": [
+      {
+        "Name": "BinFile01.rar",
+        "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\BinFile01.rar"
+      },
+      {
+        "Name": "BinFile02.rar",
+        "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\BinFile02.rar"
+      },
+      {
+        "Name": "TextFile02.txt",
+        "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\TextFile02.txt"
+      },
+      [
+        {
+          "Name": "SomeJson.json",
+          "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\FileContentTests\\SomeJson.json"
+        },
+        {
+          "Name": "SomeJson.rar",
+          "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\FileContentTests\\SomeJson.rar"
+        }
+      ],
+      [
+        {
+          "Name": "SubBinFile01.rar",
+          "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\SubBinFile01.rar"
+        },
+        {
+          "Name": "SubTextFile01.txt",
+          "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\SubTextFile01.txt"
+        },
+        {
+          "Name": "SubTextFile02.txt",
+          "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\SubTextFile02.txt"
+        },
+        [
+          {
+            "Name": "Sub2FolderBinFile.rar",
+            "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\sub02\\Sub2FolderBinFile.rar"
+          },
+          {
+            "Name": "Sub2TextFile.txt",
+            "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\sub02\\Sub2TextFile.txt"
+          }
+        ]
+      ]
+    ]
+  },
+  {
+    "Name": "TextFile02.txt",
+    "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\TextFile02.txt",
+    "Parent": [
+      {
+        "Name": "BinFile01.rar",
+        "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\BinFile01.rar"
+      },
+      {
+        "Name": "BinFile02.rar",
+        "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\BinFile02.rar"
+      },
+      {
+        "Name": "TextFile01.txt",
+        "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\TextFile01.txt"
+      },
+      [
+        {
+          "Name": "SomeJson.json",
+          "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\FileContentTests\\SomeJson.json"
+        },
+        {
+          "Name": "SomeJson.rar",
+          "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\FileContentTests\\SomeJson.rar"
+        }
+      ],
+      [
+        {
+          "Name": "SubBinFile01.rar",
+          "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\SubBinFile01.rar"
+        },
+        {
+          "Name": "SubTextFile01.txt",
+          "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\SubTextFile01.txt"
+        },
+        {
+          "Name": "SubTextFile02.txt",
+          "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\SubTextFile02.txt"
+        },
+        [
+          {
+            "Name": "Sub2FolderBinFile.rar",
+            "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\sub02\\Sub2FolderBinFile.rar"
+          },
+          {
+            "Name": "Sub2TextFile.txt",
+            "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\sub02\\Sub2TextFile.txt"
+          }
+        ]
+      ]
+    ]
+  },
+  [
+    {
+      "Name": "SomeJson.json",
+      "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\FileContentTests\\SomeJson.json"
+    },
+    {
+      "Name": "SomeJson.rar",
+      "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\FileContentTests\\SomeJson.rar"
+    }
+  ],
+  {
+    "Name": "SomeJson.json",
+    "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\FileContentTests\\SomeJson.json",
+    "Parent": [
+      {
+        "Name": "SomeJson.rar",
+        "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\FileContentTests\\SomeJson.rar"
+      }
+    ]
+  },
+  {
+    "Name": "SomeJson.rar",
+    "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\FileContentTests\\SomeJson.rar",
+    "Parent": [
+      {
+        "Name": "SomeJson.json",
+        "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\FileContentTests\\SomeJson.json"
+      }
+    ]
+  },
+  [
+    {
+      "Name": "SubBinFile01.rar",
+      "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\SubBinFile01.rar"
+    },
+    {
+      "Name": "SubTextFile01.txt",
+      "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\SubTextFile01.txt"
+    },
+    {
+      "Name": "SubTextFile02.txt",
+      "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\SubTextFile02.txt"
+    },
+    [
+      {
+        "Name": "Sub2FolderBinFile.rar",
+        "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\sub02\\Sub2FolderBinFile.rar"
+      },
+      {
+        "Name": "Sub2TextFile.txt",
+        "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\sub02\\Sub2TextFile.txt"
+      }
+    ]
+  ],
+  {
+    "Name": "SubBinFile01.rar",
+    "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\SubBinFile01.rar",
+    "Parent": [
+      {
+        "Name": "SubTextFile01.txt",
+        "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\SubTextFile01.txt"
+      },
+      {
+        "Name": "SubTextFile02.txt",
+        "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\SubTextFile02.txt"
+      },
+      [
+        {
+          "Name": "Sub2FolderBinFile.rar",
+          "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\sub02\\Sub2FolderBinFile.rar"
+        },
+        {
+          "Name": "Sub2TextFile.txt",
+          "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\sub02\\Sub2TextFile.txt"
+        }
+      ]
+    ]
+  },
+  {
+    "Name": "SubTextFile01.txt",
+    "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\SubTextFile01.txt",
+    "Parent": [
+      {
+        "Name": "SubBinFile01.rar",
+        "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\SubBinFile01.rar"
+      },
+      {
+        "Name": "SubTextFile02.txt",
+        "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\SubTextFile02.txt"
+      },
+      [
+        {
+          "Name": "Sub2FolderBinFile.rar",
+          "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\sub02\\Sub2FolderBinFile.rar"
+        },
+        {
+          "Name": "Sub2TextFile.txt",
+          "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\sub02\\Sub2TextFile.txt"
+        }
+      ]
+    ]
+  },
+  {
+    "Name": "SubTextFile02.txt",
+    "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\SubTextFile02.txt",
+    "Parent": [
+      {
+        "Name": "SubBinFile01.rar",
+        "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\SubBinFile01.rar"
+      },
+      {
+        "Name": "SubTextFile01.txt",
+        "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\SubTextFile01.txt"
+      },
+      [
+        {
+          "Name": "Sub2FolderBinFile.rar",
+          "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\sub02\\Sub2FolderBinFile.rar"
+        },
+        {
+          "Name": "Sub2TextFile.txt",
+          "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\sub02\\Sub2TextFile.txt"
+        }
+      ]
+    ]
+  },
+  [
+    {
+      "Name": "Sub2FolderBinFile.rar",
+      "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\sub02\\Sub2FolderBinFile.rar"
+    },
+    {
+      "Name": "Sub2TextFile.txt",
+      "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\sub02\\Sub2TextFile.txt"
+    }
+  ],
+  {
+    "Name": "Sub2FolderBinFile.rar",
+    "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\sub02\\Sub2FolderBinFile.rar",
+    "Parent": [
+      {
+        "Name": "Sub2TextFile.txt",
+        "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\sub02\\Sub2TextFile.txt"
+      }
+    ]
+  },
+  {
+    "Name": "Sub2TextFile.txt",
+    "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\sub02\\Sub2TextFile.txt",
+    "Parent": [
+      {
+        "Name": "Sub2FolderBinFile.rar",
+        "FullName": "C:\\git\\testsources\\src\\TestSources.Tests\\__testsources__\\sub01\\sub02\\Sub2FolderBinFile.rar"
+      }
+    ]
+  }
+]
