@@ -1,8 +1,5 @@
-using System.IO;
-using Snapshooter.Xunit;
 using Xunit;
 using FluentAssertions;
-using TestSources.Helpers;
 using TestSources.Interfaces;
 
 namespace TestSources.Tests
@@ -41,11 +38,11 @@ namespace TestSources.Tests
 
 
         [Fact]
-        public void GetFolderByName_FileInSubFolder_IsFoundByNameWithSubDirsExplicit()
+        public void GetFolderByName_FolderInSubFolder_IsFoundByNameWithSubDirsExplicit()
         {
             // Arrange
             TestSources testSources = new TestSources();
-            string folderName = "SomeJson.json";
+            string folderName = "sub01";
             // Act
             ITestSourceItem testSourcesItem = testSources.GetFolderByName(folderName, true);
 
@@ -55,13 +52,13 @@ namespace TestSources.Tests
         }
 
         [Fact]
-        public void GetFolderByName_FileInSubFolder_IsFoundByNameWithSubDirsImplicit()
+        public void GetFolderByName_FolderInSubFolder_IsFoundByNameWithSubDirsImplicit()
         {
             // Arrange
             TestSources testSources = new TestSources();
-            string folderName = "SomeJson.json";
+            string folderName = "sub01";
             // Act
-            ITestSourceItem testSourcesItem = testSources.GetFolderByName(folderName, true);
+            ITestSourceItem testSourcesItem = testSources.GetFolderByName(folderName);
 
             // Assert
             testSourcesItem.Should().NotBeNull();
@@ -70,11 +67,11 @@ namespace TestSources.Tests
 
         //Sub2FolderBinFile.rar
         [Fact]
-        public void GetFolderByName_FileInFinalSubFolder_IsFoundByNameWithSubDirsExplicit()
+        public void GetFolderByName_FolderInFinalSubFolder_IsFoundByNameWithSubDirsExplicit()
         {
             // Arrange
             TestSources testSources = new TestSources();
-            string folderName = "Sub2FolderBinFile.rar";
+            string folderName = "sub02";
             // Act
             ITestSourceItem testSourcesItem = testSources.GetFolderByName(folderName, true);
 
@@ -84,11 +81,11 @@ namespace TestSources.Tests
         }
 
         [Fact]
-        public void GetFolderByName_FileInFinalSubFolder_IsFoundByNameWithSubDirsImplicit()
+        public void GetFolderByName_FolderInFinalSubFolder_IsFoundByNameWithSubDirsImplicit()
         {
             // Arrange
             TestSources testSources = new TestSources();
-            string folderName = "Sub2FolderBinFile.rar";
+            string folderName = "sub02";
             // Act
             ITestSourceItem testSourcesItem = testSources.GetFolderByName(folderName, true);
 
@@ -98,11 +95,11 @@ namespace TestSources.Tests
         }
 
         [Fact]
-        public void GetFolderByName_UnexistingFileInRoot_IsNotFoundByNameWithoutSubdirs()
+        public void GetFolderByName_UnexistingFolderInRoot_IsNotFoundByNameWithoutSubdirs()
         {
             // Arrange
             TestSources testSources = new TestSources();
-            string folderName = "IDoNotExist.ext";
+            string folderName = "IDoNotExist";
             // Act
             ITestSourceItem testSourcesItem = testSources.GetFolderByName(folderName, false);
 
@@ -111,11 +108,11 @@ namespace TestSources.Tests
         }
 
         [Fact]
-        public void GetFolderByName_UnexistingFileInRoot_IsNotFoundByNameIncludingSubDirs()
+        public void GetFolderByName_UnexistingFolderInRoot_IsNotFoundByNameIncludingSubDirs()
         {
             // Arrange
             TestSources testSources = new TestSources();
-            string folderName = "IDoNotExist.ext";
+            string folderName = "IDoNotExist";
             // Act
             ITestSourceItem testSourcesItem = testSources.GetFolderByName(folderName, true);
 
@@ -124,11 +121,11 @@ namespace TestSources.Tests
         }
 
         [Fact]
-        public void GetFolderByName_FileInRoot_IsNotFoundByNameInLowerCase()
+        public void GetFolderByName_FolderInRoot_IsNotFoundByNameInLowerCase()
         {
             // Arrange
             TestSources testSources = new TestSources();
-            string folderName = "binfile01.rar";
+            string folderName = "filecontenttests"; //FileContentTests
             // Act
             ITestSourceItem testSourcesItem = testSources.GetFolderByName(folderName, false);
 
@@ -136,21 +133,19 @@ namespace TestSources.Tests
             testSourcesItem.Should().BeNull();
         }
 
-        //TextFile01.txt
         [Fact]
-        public void GetFolderByName_FileInRootAndFinalSubfolder_OnlyFirstFolderFileIsFound()
+        public void GetFolderByName_FolderInRootAndFinalSubfolder_OnlyFirstFolderFileIsFound()
         {
             // Arrange
             TestSources testSources = new TestSources();
-            string folderName = "TextFile01.txt";
+            string folderName = "sub01";
             // Act
-            ITestSourceItem testSourcesItem = testSources.GetFolderByName(folderName, false);
+            ITestSourceItem testSourcesItem = testSources.GetFolderByName(folderName, true);
 
             // Assert
             testSourcesItem.Should().NotBeNull();
             testSourcesItem.Name.Should().Be(folderName);
             testSourcesItem.Parent.Name.Should().Be(GetFolderByNameTests.rootpath);
-
         }
     }
 }

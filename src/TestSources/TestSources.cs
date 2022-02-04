@@ -40,6 +40,16 @@ namespace TestSources
         {
             ScanFileSystem();
         }
+        /// <summary>
+        /// Provides static access
+        /// </summary>
+        public static TestSources TestSource
+        {
+            get
+            {
+                return new TestSources();
+            }
+        }
 
         /// <summary>
         /// Scans the filesystem and builds the virtual filesystem tree that powers up TestSources
@@ -93,14 +103,6 @@ namespace TestSources
             }
         }
 
-        //private static string GetProjectPath()
-        //{
-        //    var workingDirectory = Environment.CurrentDirectory;
-        //    var projectDirectory = Directory.GetParent(workingDirectory)?.Parent.Parent.FullName;
-
-        //    return projectDirectory;
-        //}
-
         //TODO: Make those extension methods for ITestSourceItem so we can do this from any directory 
         public ITestSourceItem GetByName(string name, bool includeSubdirs = true)
         {
@@ -140,11 +142,19 @@ namespace TestSources
 
         public ITestSourceItem GetFolderByName(string name, bool includeSubdirs = true)
         {
-            ITestSourceItem sourcesItem = GetFiles(includeSubdirs, typeof(ITestSourceDir)) // typeof(ITestSourceDir)) doesn't work
+            ITestSourceItem sourcesItem = GetFiles(includeSubdirs, typeof(TestSourceDir)) // typeof(ITestSourceDir)) doesn't work
                 .Where(s => s.Name == name)
                 .FirstOrDefault();
 
             return sourcesItem;
+        }
+    }
+
+    public static TestSources TestSource
+    {
+        get
+        {
+            return new TestSources();
         }
     }
 }

@@ -1,8 +1,5 @@
-using System.IO;
-using Snapshooter.Xunit;
 using Xunit;
 using FluentAssertions;
-using TestSources.Helpers;
 using TestSources.Interfaces;
 
 namespace TestSources.Tests
@@ -10,7 +7,7 @@ namespace TestSources.Tests
     public class GetFileByNameTests
     {
         static readonly string rootpath = "__testsources__";
-
+        
         [Fact]
         public void GetFileByName_FileInRoot_IsFoundByNameWithoutSubDirs()
         {
@@ -39,7 +36,6 @@ namespace TestSources.Tests
             testSourcesItem.Name.Should().Be(fileName);
         }
 
-
         [Fact]
         public void GetFileByName_FileInSubFolder_IsFoundByNameWithSubDirsExplicit()
         {
@@ -61,7 +57,7 @@ namespace TestSources.Tests
             TestSources testSources = new TestSources();
             string fileName = "SomeJson.json";
             // Act
-            ITestSourceItem testSourcesItem = testSources.GetFileByName(fileName, true);
+            ITestSourceItem testSourcesItem = testSources.GetFileByName(fileName);
 
             // Assert
             testSourcesItem.Should().NotBeNull();
@@ -150,7 +146,6 @@ namespace TestSources.Tests
             testSourcesItem.Should().NotBeNull();
             testSourcesItem.Name.Should().Be(fileName);
             testSourcesItem.Parent.Name.Should().Be(GetFileByNameTests.rootpath);
-
         }
     }
 }

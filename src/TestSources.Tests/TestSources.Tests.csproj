@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
 
     <IsPackable>false</IsPackable>
   </PropertyGroup>
@@ -43,6 +43,7 @@
   
   <ItemGroup>
     <Folder Include="__snapshots__\" />
+    <Folder Include="__TestSources__\sub01\sub02\sub03\sub01\" />
   </ItemGroup>
 
 </Project>
