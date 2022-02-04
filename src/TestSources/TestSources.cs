@@ -104,7 +104,7 @@ namespace TestSources
         //TODO: Make those extension methods for ITestSourceItem so we can do this from any directory 
         public ITestSourceItem GetByName(string name, bool includeSubdirs = true)
         {
-            ITestSourceItem sourcesItem = GetFiles(includeSubdirs, typeof(ITestSourceItem))
+            ITestSourceItem sourcesItem = GetFiles(includeSubdirs, typeof(ITestSourceItem)) 
                     .Where(s => s.Name == name)
                     .FirstOrDefault();
 
@@ -140,7 +140,7 @@ namespace TestSources
 
         public ITestSourceItem GetFolderByName(string name, bool includeSubdirs = true)
         {
-            ITestSourceItem sourcesItem = GetFiles(includeSubdirs, typeof(ITestSourceDir))
+            ITestSourceItem sourcesItem = GetFiles(includeSubdirs, typeof(ITestSourceDir)) // typeof(ITestSourceDir)) doesn't work
                 .Where(s => s.Name == name)
                 .FirstOrDefault();
 
