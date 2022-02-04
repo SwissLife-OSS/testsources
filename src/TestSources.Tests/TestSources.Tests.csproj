@@ -30,6 +30,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="__TestSources__\sub01\sub02\TextFile01.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="SourceGeneratorsTests.cs" />
   </ItemGroup>
   

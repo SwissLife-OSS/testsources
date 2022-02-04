@@ -6,7 +6,7 @@ using System.Text;
 
 namespace TestSources.Helpers
 {
-    internal static class ProjectHelpers
+    public static class ProjectHelpers
     {
         public static string GetProjectPath()
         {

@@ -22,6 +22,10 @@ namespace TestSources.Generators
 
         public void Execute(GeneratorExecutionContext context)
         {
+            // Disabled
+            // WIP - Work in progress not fully working yet
+            return;
+
             // we want to go over the testsources folder and traverse through all the elements of
             // this root folder, for each element:
             //  - if we find a folder, process it like the root folder (recursive function)
@@ -38,7 +42,7 @@ namespace TestSources.Generators
             // begin creating the source we'll inject into the users compilation
             var sourceBuilder = new StringBuilder(@"
 
-// v11
+// v12
 using System;
 
 namespace TestSources
@@ -114,7 +118,7 @@ namespace TestSources
 
             }
 
-            private DirectoryInfo GetDirectoryInfoFromFolderName(string testSourcesFolder, string firstFileInTestSources)
+        private DirectoryInfo GetDirectoryInfoFromFolderName(string testSourcesFolder, string firstFileInTestSources)
         {
             FileInfo fi = new FileInfo(firstFileInTestSources);
             DirectoryInfo di = fi.Directory;

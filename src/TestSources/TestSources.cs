@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using TestSources.Interfaces;
+using TestSources.Helpers;
 
 namespace TestSources
 {
@@ -11,7 +12,7 @@ namespace TestSources
     /// Gets the root TestSources folder and enables access to its files, folders
     /// methods and properties.
     /// </summary>
-    public partial class TestSources : TestSourceDir, ITestSourceDir
+    public partial class TestSources : TestSourceDir
     {
         private const string DefaultTestSourcesFolder = "__testsources__";
         private static bool _fileSystemScanned = false;
@@ -20,14 +21,17 @@ namespace TestSources
         {
             get
             {
-                var projectDirectory = GetProjectPath();
+                var projectDirectory = ProjectHelpers.GetProjectPath();
 
                 return Path.Combine(projectDirectory, DefaultTestSourcesFolder);
             }
         }
 
         private IEnumerable<ITestSourceItem> _filesAndFolders;
-        public IEnumerable<ITestSourceItem> FilesAndFolders { get; set; }
+        public IEnumerable<ITestSourceItem> FilesAndFolders {
+            get => _filesAndFolders;
+            set => _filesAndFolders = value;
+        }
 
         /// <summary>
         /// Constructor of the TestSources Folder 
@@ -89,14 +93,13 @@ namespace TestSources
             }
         }
 
-        private static string GetProjectPath()
-        {
-            var workingDirectory = Environment.CurrentDirectory;
-            var projectDirectory = Directory.GetParent(workingDirectory)?.Parent.Parent.FullName;
+        //private static string GetProjectPath()
+        //{
+        //    var workingDirectory = Environment.CurrentDirectory;
+        //    var projectDirectory = Directory.GetParent(workingDirectory)?.Parent.Parent.FullName;
 
-            return projectDirectory;
-        }
-
+        //    return projectDirectory;
+        //}
 
         //TODO: Make those extension methods for ITestSourceItem so we can do this from any directory 
         public ITestSourceItem GetByName(string name, bool includeSubdirs = true)
