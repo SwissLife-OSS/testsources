@@ -26,6 +26,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <AdditionalFiles Remove="__TestSources__\sub01\sub02\sub03\**" />
+    <Compile Remove="__TestSources__\sub01\sub02\sub03\**" />
+    <EmbeddedResource Remove="__TestSources__\sub01\sub02\sub03\**" />
+    <None Remove="__TestSources__\sub01\sub02\sub03\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="SourceGeneratorsTests.cs" />
   </ItemGroup>
 
@@ -43,7 +50,6 @@
   
   <ItemGroup>
     <Folder Include="__snapshots__\" />
-    <Folder Include="__TestSources__\sub01\sub02\sub03\sub01\" />
   </ItemGroup>
 
 </Project>

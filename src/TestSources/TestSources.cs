@@ -107,13 +107,19 @@ namespace TestSources
         /// <returns></returns>
         public ITestSourceItem GetByName(string name, bool includeSubdirs = true)
         {
-            ITestSourceItem sourcesItem = GetFiles(includeSubdirs, typeof(ITestSourceItem)) 
-                    .Where(s => s.Name == name)
-                    .FirstOrDefault();
+            ITestSourceItem sourcesItem = GetFiles<ITestSourceItem>(includeSubdirs)
+                       .Where(s => s.Name == name)
+                       .FirstOrDefault();
 
             return sourcesItem;
         }
 
+        /// <summary>
+        /// Gets the files from the testsources folder that matches a type
+        /// </summary>
+        /// <param name="includeSubDirectories"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
         private IEnumerable<ITestSourceItem> GetFiles(bool includeSubDirectories, Type type)
         {
             IEnumerable<ITestSourceItem> files;
@@ -126,11 +132,38 @@ namespace TestSources
                 files = this.ChildItems;
             }
 
+            //IEnumerable<ITestSourceItem> filesByType = (IEnumerable<ITestSourceItem>)files.OfType<type.GetType()>();
+            //IEnumerable<ITestSourceItem> filesByType2 = files.Single( s => s is ITestSourceItem);
+
             IEnumerable<ITestSourceItem> filesByType = files
                 .Where(x => x.GetType() == type);
 
             return filesByType;
         }
+
+        /// <summary>
+        /// Gets the files from the testsources folder that matches a type
+        /// </summary>
+        /// <param name="includeSubDirectories"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        private IEnumerable<ITestSourceItem> GetFiles<T>(bool includeSubDirectories)
+        {
+            IEnumerable<ITestSourceItem> files;
+            if (includeSubDirectories)
+            {
+                files = this.FilesAndFolders;
+            }
+            else
+            {
+                files = this.ChildItems;
+            }
+
+            IEnumerable<ITestSourceItem> filesByType = (IEnumerable<ITestSourceItem>)files.OfType<T>();
+
+            return filesByType;
+        }
+
 
         /// <summary>
         /// Gets a file from the files contained under the testsources folder by its name
@@ -140,7 +173,7 @@ namespace TestSources
         /// <returns></returns>
         public ITestSourceItem GetFileByName(string name, bool includeSubdirs = true)
         {
-            ITestSourceItem sourcesItem = GetFiles(includeSubdirs, typeof(TestSourceFile))
+            ITestSourceItem sourcesItem = GetFiles<TestSourceFile>(includeSubdirs)
                 .Where(s => s.Name == name)
                 .FirstOrDefault();
 
@@ -155,7 +188,7 @@ namespace TestSources
         /// <returns></returns>
         public ITestSourceItem GetFolderByName(string name, bool includeSubdirs = true)
         {
-            ITestSourceItem sourcesItem = GetFiles(includeSubdirs, typeof(TestSourceDir)) // typeof(ITestSourceDir)) doesn't work
+            ITestSourceItem sourcesItem = GetFiles<TestSourceDir>(includeSubdirs) 
                 .Where(s => s.Name == name)
                 .FirstOrDefault();
 
