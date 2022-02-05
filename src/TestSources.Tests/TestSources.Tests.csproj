@@ -22,14 +22,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <AdditionalFiles Include="__TestSources__\**" />    
+    <AdditionalFiles Include="__testsources__\**" />    
   </ItemGroup>
 
   <ItemGroup>
-    <AdditionalFiles Remove="__TestSources__\sub01\sub02\sub03\**" />
-    <Compile Remove="__TestSources__\sub01\sub02\sub03\**" />
-    <EmbeddedResource Remove="__TestSources__\sub01\sub02\sub03\**" />
-    <None Remove="__TestSources__\sub01\sub02\sub03\**" />
+    <AdditionalFiles Remove="__testsources__\sub01\sub02\sub03\**" />
+    <Compile Remove="__testsources__\sub01\sub02\sub03\**" />
+    <EmbeddedResource Remove="__testsources__\sub01\sub02\sub03\**" />
+    <None Remove="__testsources__\sub01\sub02\sub03\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,7 +37,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="__TestSources__\sub01\sub02\TextFile01.txt" />
+    <None Remove="__testsources__\sub01\sub02\TextFile01.txt" />
   </ItemGroup>
 
   <ItemGroup>
