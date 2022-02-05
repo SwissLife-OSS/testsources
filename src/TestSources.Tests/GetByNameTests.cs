@@ -13,6 +13,7 @@ namespace TestSources.Tests
         {
             // Arrange
             string fileName = "BinFile01.rar";
+
             // Act
             ITestSourceItem testSourcesItem = TestSource.GetByName(fileName, false);
 

@@ -10,6 +10,7 @@ namespace TestSources
     public static class TestSource
     {
         #region TestSourceDir
+
         /// <summary>
         /// Gets the name of the file.
         /// </summary>
@@ -40,8 +41,6 @@ namespace TestSources
         /// and used in LINQ.
         /// </summary>
         public static IEnumerator<ITestSourceItem> GetEnumerator() => TestSources.GetEnumerator();
-
-
 
         #endregion TestSourceDir
 

@@ -132,9 +132,6 @@ namespace TestSources
                 files = this.ChildItems;
             }
 
-            //IEnumerable<ITestSourceItem> filesByType = (IEnumerable<ITestSourceItem>)files.OfType<type.GetType()>();
-            //IEnumerable<ITestSourceItem> filesByType2 = files.Single( s => s is ITestSourceItem);
-
             IEnumerable<ITestSourceItem> filesByType = files
                 .Where(x => x.GetType() == type);
 
@@ -163,7 +160,6 @@ namespace TestSources
 
             return filesByType;
         }
-
 
         /// <summary>
         /// Gets a file from the files contained under the testsources folder by its name
