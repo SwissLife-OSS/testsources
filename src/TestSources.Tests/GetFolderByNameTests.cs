@@ -65,7 +65,6 @@ namespace TestSources.Tests
             testSourcesItem.Name.Should().Be(folderName);
         }
 
-        //Sub2FolderBinFile.rar
         [Fact]
         public void GetFolderByName_FolderInFinalSubFolder_IsFoundByNameWithSubDirsExplicit()
         {

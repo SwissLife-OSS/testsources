@@ -28,6 +28,11 @@ namespace TestSources
         }
 
         private IEnumerable<ITestSourceItem> _filesAndFolders;
+
+        /// <summary>
+        /// Provides a list of ITestSourceItems with the files and folders
+        /// in the testsources folder and subfolders
+        /// </summary>
         public IEnumerable<ITestSourceItem> FilesAndFolders {
             get => _filesAndFolders;
             set => _filesAndFolders = value;
@@ -39,16 +44,6 @@ namespace TestSources
         public TestSources() : base(FullPath, null)
         {
             ScanFileSystem();
-        }
-        /// <summary>
-        /// Provides static access
-        /// </summary>
-        public static TestSources TestSource
-        {
-            get
-            {
-                return new TestSources();
-            }
         }
 
         /// <summary>
@@ -103,7 +98,13 @@ namespace TestSources
             }
         }
 
-        //TODO: Make those extension methods for ITestSourceItem so we can do this from any directory 
+        //TODO: Make those extension methods for ITestSourceItem so we can do this from any directory
+        /// <summary>
+        /// Gets a file or folder from the testsources folder by its name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="includeSubdirs"></param>
+        /// <returns></returns>
         public ITestSourceItem GetByName(string name, bool includeSubdirs = true)
         {
             ITestSourceItem sourcesItem = GetFiles(includeSubdirs, typeof(ITestSourceItem)) 
@@ -131,6 +132,12 @@ namespace TestSources
             return filesByType;
         }
 
+        /// <summary>
+        /// Gets a file from the files contained under the testsources folder by its name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="includeSubdirs"></param>
+        /// <returns></returns>
         public ITestSourceItem GetFileByName(string name, bool includeSubdirs = true)
         {
             ITestSourceItem sourcesItem = GetFiles(includeSubdirs, typeof(TestSourceFile))
@@ -140,6 +147,12 @@ namespace TestSources
             return sourcesItem;
         }
 
+        /// <summary>
+        /// Gets a folder from the files contained under the testsources folder by its name.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="includeSubdirs"></param>
+        /// <returns></returns>
         public ITestSourceItem GetFolderByName(string name, bool includeSubdirs = true)
         {
             ITestSourceItem sourcesItem = GetFiles(includeSubdirs, typeof(TestSourceDir)) // typeof(ITestSourceDir)) doesn't work
@@ -147,14 +160,6 @@ namespace TestSources
                 .FirstOrDefault();
 
             return sourcesItem;
-        }
-    }
-
-    public static TestSources TestSource
-    {
-        get
-        {
-            return new TestSources();
         }
     }
 }

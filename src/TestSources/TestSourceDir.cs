@@ -100,6 +100,10 @@ namespace TestSources
             return files;
         }
 
+        /// <summary>
+        /// Provides the enumerator to the ChildItems IEnumerable (List) so it can be iterated
+        /// and used in LINQ.
+        /// </summary>
         public IEnumerator<ITestSourceItem> GetEnumerator()
         {
             return _childItems.GetEnumerator();
