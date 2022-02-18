@@ -4,7 +4,7 @@
     <Product>TestSources</Product>
     <Authors>Swiss Life authors and contributors</Authors>
     <Company>Swiss Life</Company>
-    <Copyright>Copyright © 2019 Swiss Life</Copyright>
+    <Copyright>Copyright © $(Company) $([System.DateTime]::Now.Year)</Copyright>
     <PackageLicenseUrl>https://github.com/SwissLife-OSS/TestSources/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/SwissLife-OSS/TestSources</PackageProjectUrl>
     <PackageReleaseNotes>Release notes: https://github.com/SwissLife-OSS/TestSources/releases/$(Version)</PackageReleaseNotes>
@@ -12,6 +12,7 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageIconUrl>https://github.com/SwissLife-OSS/TestSources/raw/master/logo.png</PackageIconUrl>
 	  <IsPackable>false</IsPackable>
+    <LangVersion>9.0</LangVersion>
   </PropertyGroup>
 
   <PropertyGroup>

@@ -1,11 +1,22 @@
 <Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="$(CCTestProjectProps)" Condition="Exists('$(CCTestProjectProps)')" />
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-
-    <IsPackable>false</IsPackable>
+    <AssemblyName>TestSources.Tests</AssemblyName>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>Full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+
+<!--
+  Included in Import CCTestprojectProps
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="6.2.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
@@ -19,10 +30,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-  </ItemGroup>
+  </ItemGroup> -->
 
   <ItemGroup>
-    <AdditionalFiles Include="__testsources__\**" />    
+    <AdditionalFiles Include="__testsources__\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -43,11 +54,11 @@
   <ItemGroup>
     <None Include="SourceGeneratorsTests.cs" />
   </ItemGroup>
-  
+
   <ItemGroup>
     <ProjectReference Include="..\TestSources\TestSources.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="true" />
   </ItemGroup>
-  
+
   <ItemGroup>
     <Folder Include="__snapshots__\" />
   </ItemGroup>
