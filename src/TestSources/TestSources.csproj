@@ -1,5 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="$(CCResourceProjectNet6Props)" Condition="Exists('$(CCResourceProjectNet6Props)')" />
+  <Import Project="$(ResourceProjectTargetFrameworks)" Condition="Exists('$(ResourceProjectTargetFrameworks)')" />
+ <!-- <Import Project="$(CCResourceProjectNet6Props)" Condition="Exists('$(CCResourceProjectNet6Props)')" /> -->
 
   <PropertyGroup>
     <AssemblyName>TestSources</AssemblyName>
