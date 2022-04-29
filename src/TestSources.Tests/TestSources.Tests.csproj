@@ -56,11 +56,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TestSources\TestSources.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="true" />
+    <Folder Include="__snapshots__\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="__snapshots__\" />
+    <ProjectReference Include="..\TestSources\TestSources.csproj" />
   </ItemGroup>
 
 </Project>

@@ -6,7 +6,6 @@
     <CCPackageProps>$([System.IO.Path]::Combine($(CCSourceDirectory), 'Package.props'))</CCPackageProps>
     <CCTestProjectProps>$([System.IO.Path]::Combine($(CCSourceDirectory), 'TestProject.props'))</CCTestProjectProps>
     <CCResourceProjectProps>$([System.IO.Path]::Combine($(CCSourceDirectory), 'ResourceProject.props'))</CCResourceProjectProps>
-    <CCResourceProjectNet6Props>$([System.IO.Path]::Combine($(CCSourceDirectory), 'ResourceProjectNet6.props'))</CCResourceProjectNet6Props>
     <CCDependenciesProps>$([System.IO.Path]::Combine($(CCSourceDirectory), 'Dependencies.props'))</CCDependenciesProps>
   </PropertyGroup>
 
