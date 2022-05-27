@@ -1,6 +1,8 @@
 using System;
 using System.IO;
+using System.Text;
 using TestSources.Interfaces;
+using TestSources.Extensions;
 
 namespace TestSources
 {
@@ -59,5 +61,27 @@ namespace TestSources
         {
             return _fileInfo.OpenRead();
         }
+
+        #region As*** Methods
+
+        /// <summary>
+        /// Reads the current file and returns its content as an
+        /// string with a default UTF8 encoding.
+        /// </summary>
+        /// <returns>The file contents</returns>
+        public string AsString() =>
+            this.AsStringExt();
+
+        /// <summary>
+        /// Reads the current file and returns its content as an
+        /// string with the provided encoding.
+        /// </summary>
+        /// <param name="encoding"></param>
+        /// <returns>The file contents in string format</returns>
+        public string AsString(Encoding encoding) =>
+            this.AsStringExt(encoding);
+
+        #endregion As*** Methods
+
     }
 }

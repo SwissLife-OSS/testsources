@@ -15,7 +15,7 @@ namespace TestSources.Tests
             string fileName = "BinFile01.rar";
 
             // Act
-            ITestSourceItem testSourcesItem = TestSource.GetFile(fileName, false);
+            ITestSourceFile testSourcesItem = TestSource.GetFile(fileName, false);
 
             // Assert
             testSourcesItem.Should().NotBeNull();
@@ -29,7 +29,7 @@ namespace TestSources.Tests
             string fileName = "BinFile01.rar";
 
             // Act
-            ITestSourceItem testSourcesItem = TestSource.GetFile(fileName, true);
+            ITestSourceFile testSourcesItem = TestSource.GetFile(fileName, true);
 
             // Assert
             testSourcesItem.Should().NotBeNull();
@@ -43,7 +43,7 @@ namespace TestSources.Tests
             string fileName = "SomeJson.json";
 
             // Act
-            ITestSourceItem testSourcesItem = TestSource.GetFile(fileName, true);
+            ITestSourceFile testSourcesItem = TestSource.GetFile(fileName, true);
 
             // Assert
             testSourcesItem.Should().NotBeNull();
@@ -57,11 +57,10 @@ namespace TestSources.Tests
             string fileName = "SomeJson.json";
 
             // Act
-            ITestSourceItem testSourcesItem = TestSource.GetFile(fileName);
+            ITestSourceFile testSourcesItem = TestSource.GetFile(fileName);
 
             // Assert
-            testSourcesItem.Should().NotBeNull();
-            testSourcesItem.Name.Should().Be(fileName);
+            testSourcesItem.Should().BeNull(); // Fails as it is not hierarchical
         }
 
         [Fact]
@@ -71,7 +70,7 @@ namespace TestSources.Tests
             string fileName = "Sub2FolderBinFile.rar";
 
             // Act
-            ITestSourceItem testSourcesItem = TestSource.GetFile(fileName, true);
+            ITestSourceFile testSourcesItem = TestSource.GetFile(fileName, true);
 
             // Assert
             testSourcesItem.Should().NotBeNull();
@@ -85,7 +84,7 @@ namespace TestSources.Tests
             string fileName = "Sub2FolderBinFile.rar";
 
             // Act
-            ITestSourceItem testSourcesItem = TestSource.GetFile(fileName, true);
+            ITestSourceFile testSourcesItem = TestSource.GetFile(fileName, true);
 
             // Assert
             testSourcesItem.Should().NotBeNull();
@@ -99,7 +98,7 @@ namespace TestSources.Tests
             string fileName = "IDoNotExist.ext";
 
             // Act
-            ITestSourceItem testSourcesItem = TestSource.GetFile(fileName, false);
+            ITestSourceFile testSourcesItem = TestSource.GetFile(fileName, false);
 
             // Assert
             testSourcesItem.Should().BeNull();
@@ -112,7 +111,7 @@ namespace TestSources.Tests
             string fileName = "IDoNotExist.ext";
 
             // Act
-            ITestSourceItem testSourcesItem = TestSource.GetFile(fileName, true);
+            ITestSourceFile testSourcesItem = TestSource.GetFile(fileName, true);
 
             // Assert
             testSourcesItem.Should().BeNull();
@@ -125,7 +124,7 @@ namespace TestSources.Tests
             string fileName = "binfile01.rar";
 
             // Act
-            ITestSourceItem testSourcesItem = TestSource.GetFile(fileName, false);
+            ITestSourceFile testSourcesItem = TestSource.GetFile(fileName, false);
 
             // Assert
             testSourcesItem.Should().BeNull();
@@ -138,7 +137,7 @@ namespace TestSources.Tests
             string fileName = "TextFile01.txt";
 
             // Act
-            ITestSourceItem testSourcesItem = TestSource.GetFile(fileName, false);
+            ITestSourceFile testSourcesItem = TestSource.GetFile(fileName, false);
 
             // Assert
             testSourcesItem.Should().NotBeNull();

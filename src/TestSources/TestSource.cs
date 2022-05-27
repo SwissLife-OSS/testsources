@@ -84,7 +84,7 @@ namespace TestSources
         /// <param name="name"></param>
         /// <param name="includeSubdirs"></param>
         /// <returns></returns>
-        public static ITestSourceFile GetFile(string name, bool includeSubdirs = true)
+        public static ITestSourceFile GetFile(string name, bool includeSubdirs = false)
         {
             return (ITestSourceFile)TestSources.GetFileByName(name, includeSubdirs);
         }
@@ -95,7 +95,7 @@ namespace TestSources
         /// <param name="name"></param>
         /// <param name="includeSubdirs"></param>
         /// <returns></returns>
-        public static TestSourceDir GetFolder(string name, bool includeSubdirs = true)
+        public static TestSourceDir GetFolder(string name, bool includeSubdirs = false)
         {
             return (TestSourceDir)TestSources.GetFolderByName(name, includeSubdirs);
         }
