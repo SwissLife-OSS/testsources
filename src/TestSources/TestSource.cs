@@ -31,16 +31,30 @@ namespace TestSources
         /// </summary>
         /// <param name="recursive"></param>
         /// <returns></returns>
-        public static IEnumerable<ITestSourceItem> GetItems(bool recursive = false)
-        {
-            return TestSources.GetItems(recursive);
-        }
+        //public static IEnumerable<ITestSourceItem> GetItems(bool recursive = false)
+        //{
+        //    return TestSources.GetItems(recursive);
+        //}
 
         /// <summary>
         /// Provides the enumerator to the ChildItems IEnumerable (List) so it can be iterated
         /// and used in LINQ.
         /// </summary>
         public static IEnumerator<ITestSourceItem> GetEnumerator() => TestSources.GetEnumerator();
+
+        /// <summary>
+        /// Gets all the files from the directory
+        /// </summary>
+        /// <returns></returns>
+        public static IEnumerable<ITestSourceFile> GetFiles() =>
+            TestSources.GetFiles();
+
+        /// <summary>
+        /// Gets all the folders on the directory
+        /// </summary>
+        /// <returns></returns>
+        public static IEnumerable<ITestSourceDir> GetFolders() =>
+            TestSources.GetFolders();
 
         #endregion TestSourceDir
 
@@ -59,10 +73,10 @@ namespace TestSources
         /// <param name="name"></param>
         /// <param name="includeSubdirs"></param>
         /// <returns></returns>
-        public static ITestSourceItem GetByName(string name, bool includeSubdirs = true)
-        {
-            return TestSources.GetByName(name, includeSubdirs);
-        }
+        //public static ITestSourceItem GetByName(string name, bool includeSubdirs = true)
+        //{
+        //    return TestSources.GetByName(name, includeSubdirs);
+        //}
 
         /// <summary>
         /// Gets a file from the files contained under the testsources folder by its name.
@@ -70,9 +84,9 @@ namespace TestSources
         /// <param name="name"></param>
         /// <param name="includeSubdirs"></param>
         /// <returns></returns>
-        public static ITestSourceItem GetFileByName(string name, bool includeSubdirs = true)
+        public static ITestSourceFile GetFile(string name, bool includeSubdirs = true)
         {
-            return TestSources.GetFileByName(name, includeSubdirs);
+            return (ITestSourceFile)TestSources.GetFileByName(name, includeSubdirs);
         }
 
         /// <summary>
@@ -81,9 +95,9 @@ namespace TestSources
         /// <param name="name"></param>
         /// <param name="includeSubdirs"></param>
         /// <returns></returns>
-        public static ITestSourceItem GetFolderByName(string name, bool includeSubdirs = true)
+        public static TestSourceDir GetFolder(string name, bool includeSubdirs = true)
         {
-            return TestSources.GetFolderByName(name, includeSubdirs);
+            return (TestSourceDir)TestSources.GetFolderByName(name, includeSubdirs);
         }
 
         private static TestSources _testSources;
