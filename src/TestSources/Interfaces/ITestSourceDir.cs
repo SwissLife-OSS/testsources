@@ -13,5 +13,10 @@ namespace TestSources.Interfaces
         /// <param name="recursive"></param>
         /// <returns></returns>
         IEnumerable<ITestSourceItem> GetItems(bool recursive = false);
+
+        IEnumerable<ITestSourceFile> GetFiles();
+
+        IEnumerable<ITestSourceDir> GetFolders();
+
     }
 }

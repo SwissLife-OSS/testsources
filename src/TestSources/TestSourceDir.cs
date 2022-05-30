@@ -113,5 +113,42 @@ namespace TestSources
         {
             return this.GetEnumerator();
         }
+        /// <summary>
+        /// Gets and returns a IEnumerable with the files on this directory.
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<ITestSourceFile> GetFiles()
+        {
+            IEnumerable<ITestSourceFile> files =
+                (IEnumerable<ITestSourceFile>)GetTestSourceItemByTypes<ITestSourceFile>();
+
+            return files;
+        }
+
+        /// <summary>
+        /// Gets the folders contained on this directory.
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<ITestSourceDir> GetFolders()
+        {
+            IEnumerable<ITestSourceDir> folders =
+                (IEnumerable<ITestSourceDir>)GetTestSourceItemByTypes<ITestSourceDir>();
+
+            return folders;
+        }
+
+        /// <summary>
+        /// Gets the files from the testsources folder that matches a type
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        private IEnumerable<ITestSourceItem> GetTestSourceItemByTypes<T>()
+        {
+            IEnumerable<ITestSourceItem> files = this.ChildItems;
+            IEnumerable<ITestSourceItem>
+                filesByType = (IEnumerable<ITestSourceItem>)files.OfType<T>();
+
+            return filesByType;
+        }
     }
 }

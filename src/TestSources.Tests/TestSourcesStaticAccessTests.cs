@@ -31,7 +31,7 @@ namespace TestSources.Tests
             //assert
             TestSource.FullName.Should().Be(path);
             TestSource.FilesAndFolders.Should().NotBeEmpty();
-            TestSource.GetItems().Should().NotBeEmpty();
+            TestSource.GetFiles().Should().NotBeEmpty();
         }
 
         [Fact]
@@ -41,7 +41,7 @@ namespace TestSources.Tests
             string fileName = "BinFile01.rar";
 
             // Act
-            ITestSourceItem testSourcesItem = TestSource.GetFileByName(fileName, false);
+            ITestSourceFile testSourcesItem = TestSource.GetFile(fileName, false);
 
             // Assert
             testSourcesItem.Should().NotBeNull();
@@ -53,8 +53,9 @@ namespace TestSources.Tests
         {
             // Arrange
             string fileName = "Sub2FolderBinFile.rar";
+
             // Act
-            ITestSourceItem testSourcesItem = TestSource.GetFileByName(fileName, true);
+            ITestSourceFile testSourcesItem = TestSource.GetFile(fileName, true);
 
             // Assert
             testSourcesItem.Should().NotBeNull();
@@ -68,7 +69,7 @@ namespace TestSources.Tests
             string folderName = "FileContentTests";
 
             // Act
-            ITestSourceItem testSourcesItem = TestSource.GetFolderByName(folderName, false);
+            ITestSourceDir testSourcesItem = TestSource.GetFolder(folderName, false);
 
             // Assert
             testSourcesItem.Should().NotBeNull();
@@ -82,7 +83,7 @@ namespace TestSources.Tests
             string folderName = "sub02";
 
             // Act
-            ITestSourceItem testSourcesItem = TestSource.GetFolderByName(folderName, true);
+            ITestSourceDir testSourcesItem = TestSource.GetFolder(folderName, true);
 
             // Assert
             testSourcesItem.Should().NotBeNull();
