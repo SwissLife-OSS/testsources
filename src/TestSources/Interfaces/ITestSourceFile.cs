@@ -31,6 +31,41 @@ namespace TestSources.Interfaces
         /// <returns>The file contents in string format</returns>
         string AsString(Encoding encoding);
 
+        /// <summary>
+        /// Reads the current file and returns a byte array of its content.
+        /// </summary>
+        /// <returns></returns>
+        byte[] AsByteArray();
+
+        /// <summary>
+        /// Reads the current file and returns a FileStream to it
+        /// </summary>
+        /// <param name="testSourceFile"></param>
+        /// <returns></returns>
+        FileStream AsFileStream();
+
+        /// <summary>
+        /// Reads the current file and returns its contents as a MemoryStream
+        /// </summary>
+        /// <param name="testSourceFile"></param>
+        /// <returns></returns>
+        MemoryStream AsMemoryStream();
+
+        /// <summary>
+        /// Reads the current file and returns its contents as a Stream
+        /// </summary>
+        /// <param name="testSourceFile"></param>
+        /// <returns></returns>
+        Stream AsStream();
+
+        /// <summary>
+        /// Returns the hash of a file, given a Cryptographic hash algorithm
+        /// </summary>
+        /// <param name="testSourceFile"></param>
+        /// <param name="hashAlgorithm"></param>
+        /// <returns></returns>
+        string GetHash();
+
         #endregion As*** Methods
     }
 }
