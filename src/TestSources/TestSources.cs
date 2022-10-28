@@ -43,6 +43,10 @@ namespace TestSources
         /// </summary>
         internal TestSources() : base(FullPath, null)
         {
+            string osNameAndVersion =
+                System.Runtime.InteropServices.RuntimeInformation.OSDescription;
+            Console.WriteLine($"Starting testsources, in OS: {osNameAndVersion}");
+
             ScanFileSystem();
         }
 
