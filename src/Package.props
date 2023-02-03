@@ -5,12 +5,12 @@
     <Authors>Swiss Life authors and contributors</Authors>
     <Company>Swiss Life</Company>
     <Copyright>Copyright © $(Company) $([System.DateTime]::Now.Year)</Copyright>
-    <PackageLicenseUrl>https://github.com/SwissLife-OSS/Snapshooter/blob/master/LICENSE</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/SwissLife-OSS/Snapshooter</PackageProjectUrl>
-    <PackageReleaseNotes>Release notes: https://github.com/SwissLife-OSS/Snapshooter/releases/$(Version)</PackageReleaseNotes>
+    <PackageLicenseUrl>https://github.com/SwissLife-OSS/testsources/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/SwissLife-OSS/testsources</PackageProjectUrl>
+    <PackageReleaseNotes>Release notes: https://github.com/SwissLife-OSS/testsources/releases/$(Version)</PackageReleaseNotes>
     <PackageTags>XUnit SwissLife Snapshot UnitTest Test IntegrationTest SystemTest DatabaseTest .Net</PackageTags>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <PackageIconUrl>https://github.com/SwissLife-OSS/snapshooter/raw/master/logo.png</PackageIconUrl>
+    <PackageIconUrl>https://github.com/SwissLife-OSS/testsources/raw/master/logo.png</PackageIconUrl>
     <IsPackable>false</IsPackable>
     <LangVersion>11.0</LangVersion>
   </PropertyGroup>
@@ -18,7 +18,7 @@
   <PropertyGroup>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
-    <RepositoryUrl>https://github.com/SwissLife-OSS/Snapshooter.git</RepositoryUrl>
+    <RepositoryUrl>https://github.com/SwissLife-OSS/testsources.git</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
