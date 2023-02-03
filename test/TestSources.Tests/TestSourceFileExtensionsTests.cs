@@ -119,7 +119,7 @@ namespace TestSources.Tests
         public void FileExtensionGetHash_Succeeds()
         {
             // Arrange
-            string fileName = "SomeJson.json";
+            string fileName = "BinFile01.rar";
 
             // Act
             string stringHash =
