@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <Folder Include="__snapshots__\" />
+    <Folder Include="__testsources__\" />
   </ItemGroup>
 
   <ItemGroup>
