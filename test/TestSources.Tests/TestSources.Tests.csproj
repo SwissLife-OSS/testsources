@@ -11,9 +11,9 @@
     <ProjectReference Include="..\..\src\TestSources\TestSources.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
+  <!--<ItemGroup>
     <AdditionalFiles Include="__testsources__\**" />
-  </ItemGroup>
+  </ItemGroup>-->
 
   <ItemGroup>
     <Folder Include="__snapshots__\" />
