@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>$(ResourceProjectTargetFrameworks)</TargetFrameworks>
-    <RootNamespace>Snapshooter</RootNamespace>
+    <RootNamespace>TestSources</RootNamespace>
     <IsPackable>true</IsPackable>
   </PropertyGroup>
 
