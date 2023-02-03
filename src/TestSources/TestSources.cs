@@ -10,7 +10,7 @@ namespace TestSources
 {
     /// <summary>
     /// Gets the root TestSources folder and enables access to its files, folders
-    /// methods and properties.
+    /// methods and properties
     /// </summary>
     internal partial class TestSources : TestSourceDir
     {
