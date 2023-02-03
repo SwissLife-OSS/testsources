@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="$(CCTestProjectProps)" Condition="Exists('$(CCTestProjectProps)')" />
+
+  <PropertyGroup>
+    <AssemblyName>TestSources.Tests</AssemblyName>
+    <RootNamespace>TestSources.Tests</RootNamespace>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\TestSources\TestSources.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="__testsources__\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="__snapshots__\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="SourceGeneratorsTests.cs" />
+    <None Include="SourceGeneratorsTests.cs" />
+  </ItemGroup>
+
+</Project>

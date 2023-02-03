@@ -1,14 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
-    <!--
-    <Import Project="$(ResourceProjectTargetFrameworks)" Condition="Exists('$(ResourceProjectTargetFrameworks)')" />
-    <Import Project="$(CCResourceProjectNet6Props)" Condition="Exists('$(CCResourceProjectNet6Props)')" />
-    -->
-    <Import Project="$(CCResourceProjectProps)" Condition="Exists('$(CCResourceProjectProps)')" />
+  <Import Project="$(CCResourceProjectProps)" Condition="Exists('$(CCResourceProjectProps)')" />
 
   <PropertyGroup>
     <AssemblyName>TestSources</AssemblyName>
+    <RootNamespace>TestSources</RootNamespace>
     <PackageId>TestSources</PackageId>
     <Description>TestSources core functionalities provide an easier way to manage test files.</Description>
+    <IsTestProject>false</IsTestProject>
   </PropertyGroup>
 
   <PropertyGroup>
