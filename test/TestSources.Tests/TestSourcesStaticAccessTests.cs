@@ -8,6 +8,7 @@ using TestSources;
 
 namespace TestSources.Tests
 {
+    // issue
     public class TestSourcesStaticAccessTests
     {
         [Fact]
