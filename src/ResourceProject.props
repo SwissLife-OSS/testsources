@@ -16,8 +16,4 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="xunit.core" Version="$(xUnitVersion)" />
-  </ItemGroup>
-
 </Project>

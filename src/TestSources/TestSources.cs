@@ -10,9 +10,9 @@ namespace TestSources
 {
     /// <summary>
     /// Gets the root TestSources folder and enables access to its files, folders
-    /// methods and properties.
+    /// methods and properties
     /// </summary>
-    public partial class TestSources : TestSourceDir
+    internal partial class TestSources : TestSourceDir
     {
         private const string DefaultTestSourcesFolder = "__testsources__";
         private static bool _fileSystemScanned = false;
@@ -33,7 +33,7 @@ namespace TestSources
         /// Provides a list of ITestSourceItems with the files and folders
         /// in the testsources folder and subfolders
         /// </summary>
-        public IEnumerable<ITestSourceItem> FilesAndFolders {
+        internal IEnumerable<ITestSourceItem> FilesAndFolders {
             get => _filesAndFolders;
             set => _filesAndFolders = value;
         }
@@ -41,8 +41,12 @@ namespace TestSources
         /// <summary>
         /// Constructor of the TestSources Folder 
         /// </summary>
-        public TestSources() : base(FullPath, null)
+        internal TestSources() : base(FullPath, null)
         {
+            string osNameAndVersion =
+                System.Runtime.InteropServices.RuntimeInformation.OSDescription;
+            Console.WriteLine($"Starting testsources, in OS: {osNameAndVersion}");
+
             ScanFileSystem();
         }
 
@@ -105,7 +109,7 @@ namespace TestSources
         /// <param name="name"></param>
         /// <param name="includeSubdirs"></param>
         /// <returns></returns>
-        public ITestSourceItem GetByName(string name, bool includeSubdirs = true)
+        internal ITestSourceItem GetByName(string name, bool includeSubdirs = true)
         {
             ITestSourceItem sourcesItem = GetFiles<ITestSourceItem>(includeSubdirs)
                        .Where(s => s.Name == name)
@@ -167,7 +171,7 @@ namespace TestSources
         /// <param name="name"></param>
         /// <param name="includeSubdirs"></param>
         /// <returns></returns>
-        public ITestSourceItem GetFileByName(string name, bool includeSubdirs = true)
+        internal ITestSourceItem GetFileByName(string name, bool includeSubdirs = true)
         {
             ITestSourceItem sourcesItem = GetFiles<TestSourceFile>(includeSubdirs)
                 .Where(s => s.Name == name)
@@ -182,7 +186,7 @@ namespace TestSources
         /// <param name="name"></param>
         /// <param name="includeSubdirs"></param>
         /// <returns></returns>
-        public ITestSourceItem GetFolderByName(string name, bool includeSubdirs = true)
+        internal ITestSourceItem GetFolderByName(string name, bool includeSubdirs = true)
         {
             ITestSourceItem sourcesItem = GetFiles<TestSourceDir>(includeSubdirs) 
                 .Where(s => s.Name == name)
