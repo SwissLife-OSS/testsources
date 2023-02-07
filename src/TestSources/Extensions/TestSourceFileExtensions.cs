@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using TestSources.Deserialization;
 using TestSources.Interfaces;
+# nullable enable
 
 namespace TestSources.Extensions
 {

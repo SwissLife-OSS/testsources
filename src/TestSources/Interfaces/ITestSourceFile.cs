@@ -1,5 +1,6 @@
 using System.IO;
 using System.Text;
+# nullable enable
 
 namespace TestSources.Interfaces
 {
@@ -65,6 +66,13 @@ namespace TestSources.Interfaces
         /// <param name="hashAlgorithm"></param>
         /// <returns></returns>
         string GetHash();
+
+        /// <summary>
+        /// Returns the content of a file as a concrete type, deserializing its JSON content
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        T? AsType<T>();
 
         #endregion As*** Methods
     }

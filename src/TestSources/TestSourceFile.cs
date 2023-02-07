@@ -121,6 +121,14 @@ namespace TestSources
         public string GetHash() =>
             this.GetHashExt();
 
+        /// <summary>
+        /// Returns the content of a file as a concrete type, deserializing its JSON content
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public T? AsType<T>() =>
+            this.AsTypeExt<T>();
+
         #endregion As*** Methods
 
     }

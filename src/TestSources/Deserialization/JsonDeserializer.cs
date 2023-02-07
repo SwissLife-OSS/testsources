@@ -9,6 +9,7 @@ using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
 using TestSources.Extensions;
+# nullable enable
 
 namespace TestSources.Deserialization;
 
