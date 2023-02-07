@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
+using TestSources.Deserialization;
 using TestSources.Interfaces;
 
 namespace TestSources.Extensions
@@ -15,6 +16,10 @@ namespace TestSources.Extensions
     {
         private static Encoding DefaultEncoding = Encoding.UTF8;
         private static HashAlgorithm DefaultHash = SHA256.Create();
+
+        private static IJsonDeserializer DefaultJsonDeserializer
+            = new JsonDeserializer();
+
         /// <summary>
         /// Reads the current file and returns its content as an
         /// string with a default UTF8 encoding.
@@ -84,6 +89,21 @@ namespace TestSources.Extensions
             this ITestSourceFile testSourceFile)
         {
             return (Stream)AsMemoryStreamExt(testSourceFile);
+        }
+
+       /// <summary>
+       /// Returns the file as a concrete type, treating it as containing a JSON text.
+       /// </summary>
+       /// <param name="testSourceFile"></param>
+       /// <param name="type"></param>
+       /// <returns></returns>
+        public static T? AsTypeExt<T>(
+            this ITestSourceFile testSourceFile)
+        {
+            string stringContent = AsStringExt(testSourceFile, DefaultEncoding);
+            T? deserializedObject = DefaultJsonDeserializer.Deserialize<T>(stringContent);
+
+            return deserializedObject;
         }
 
         /// <summary>
