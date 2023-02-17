@@ -1,22 +1,21 @@
 using System.Collections.Generic;
 
-namespace TestSources.Interfaces
+namespace TestSources.Interfaces;
+
+/// <summary>
+/// Allows an object to manage filesystem properties corresponding to a directory.
+/// </summary>
+public interface ITestSourceDir : ITestSourceItem, IEnumerable<ITestSourceItem>
 {
     /// <summary>
-    /// Allows an object to manage filesystem properties corresponding to a directory.
+    ///      Returns a collection of files and directories in the current directory
     /// </summary>
-    public interface ITestSourceDir : ITestSourceItem, IEnumerable<ITestSourceItem>
-    {
-        /// <summary>
-        ///      Returns a collection of files and directories in the current directory
-        /// </summary>
-        /// <param name="recursive"></param>
-        /// <returns></returns>
-        IEnumerable<ITestSourceItem> GetItems(bool recursive = false);
+    /// <param name="recursive"></param>
+    /// <returns></returns>
+    IEnumerable<ITestSourceItem> GetItems(bool recursive = false);
 
-        IEnumerable<ITestSourceFile> GetFiles();
+    IEnumerable<ITestSourceFile> GetFiles();
 
-        IEnumerable<ITestSourceDir> GetFolders();
+    IEnumerable<ITestSourceDir> GetFolders();
 
-    }
 }

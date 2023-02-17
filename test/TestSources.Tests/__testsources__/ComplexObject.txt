@@ -1,0 +1,44 @@
+ {
+  "City": [
+
+    {
+      "Tourist": [
+         {
+            "Name": "Flensburg Firth",
+            "Shorttext": "Flensburg Firth or Flensborg Fjord  is the westernmost inlet of the Baltic Sea. It forms part of the border between Germany to the south and Denmark to the north. Its length is either 40 or 50 km, depending to the definition of its limits. It has the largest surface of all Förden and East Jutland Fjorde, which are a special type of inlets, different from geological fjords.\nTwo peninsulas, Broager peninsula on the northern side and Holnis peninsula on the southern side divide the inlet in an outer and an inner part. West of them, near the Danish coast, there are two small Islands called Okseøer.\nOn the Danish side, outer part of the northern limits of the firth is formed by the island of Als with the town of Sønderborg. Towards the west, continuing on the Danish side are Broager, Egernsund, Gråsten, Rinkenæs, Sønderhav, and Kollund.\nIn Germany at the Danish border there is Harrislee, at the inner end of the inlet the town of Flensburg, east of it on the southern shore the town of Glücksburg and the villages Munkbrarup, Langballig, Westerholz, Quern, Steinberg, Niesgrau, Gelting, and Nieby.\n\n",
+            "GeoCoordinates": {
+                "Longitude": 9.42901993,
+                "Latitude": 54.7959404
+            },
+            "Images": [
+                "CE3222F5.jpg"
+            ]
+         },
+         {
+            "Name": "Naval Academy Mürwik",
+            "Shorttext": "The Naval Academy Mürwik is the main training establishment for all German Navy officers and replaced the German Imperial Naval Academy in Kiel.\nIt is located at Mürwik which is a part of Germany's most northern city, Flensburg. Built on a small hill directly by the coast, it overlooks the Flensburg Fjord. The main building of the academy is known for its beautiful architecture and location, and is often named the \"Red Castle\".\n\n",
+            "GeoCoordinates": {
+                "Longitude": 9.45944444,
+                "Latitude": 54.815
+            },
+            "Images": [
+                "34AADEDE.jpg"
+            ]
+         },
+         {
+            "Name": "Nordertor",
+            "Shorttext": "The Nordertor is an old town gate in Flensburg, Germany, which was built around 1595. Today the landmark is used as a symbol for Flensburg.\n\n",
+            "GeoCoordinates": {
+                "Longitude": 9.43004861,
+                "Latitude": 54.79541778
+            },
+            "Images": [
+                "D02DCA3E.jpg"
+             ]
+           }
+         ]
+      }
+
+    ]
+
+  }
