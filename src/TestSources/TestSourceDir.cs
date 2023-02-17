@@ -113,6 +113,7 @@ public class TestSourceDir : ITestSourceDir
     {
         return this.GetEnumerator();
     }
+
     /// <summary>
     /// Gets and returns a IEnumerable with the files on this directory.
     /// </summary>

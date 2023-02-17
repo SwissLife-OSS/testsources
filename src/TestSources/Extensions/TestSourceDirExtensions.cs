@@ -10,12 +10,12 @@ namespace TestSources.Extensions;
 public static class TestSourceDirExtensions
 {
     /// <summary>
-    /// Gets the directories contained in a directory
+    /// Gets the folders/directories contained in a directory
     /// </summary>
     /// <param name="dir"></param>
     /// <param name="recursive"></param>
     /// <returns></returns>
-    public static IEnumerable<ITestSourceDir> GetDirectories(
+    public static IEnumerable<ITestSourceDir> GetFolders(
         this ITestSourceDir dir,
         bool recursive = false)
             => dir.GetItems(recursive).OfType<ITestSourceDir>();
