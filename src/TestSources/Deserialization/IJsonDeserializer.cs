@@ -1,7 +1,6 @@
-﻿namespace TestSources.Deserialization
+namespace TestSources.Deserialization;
+
+internal interface IJsonDeserializer
 {
-    internal interface IJsonDeserializer
-    {
-        T? Deserialize<T>(string jsonString);
-    }
+    T? Deserialize<T>(string jsonString);
 }

@@ -4,7 +4,6 @@ using System.Text;
 
 namespace TestSources.Exceptions;
 
-
 public class TestSourcesValidationException : Exception
 {
     public TestSourcesValidationException()
