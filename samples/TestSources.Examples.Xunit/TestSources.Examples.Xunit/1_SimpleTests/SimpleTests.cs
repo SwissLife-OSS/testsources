@@ -20,6 +20,7 @@ public class SimpleTests
         string fileName = "BinFile01.rar";
 
         // Act
+        
         ITestSourceFile testSourcesItem = TestSource.GetFile(fileName);
 
         // Assert
