@@ -56,7 +56,7 @@ namespace TestSources
         /// <summary>
         /// Opens an existing file for reading.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A File stream Opened for reading</returns>
         public FileStream OpenRead()
         {
             return _fileInfo.OpenRead();
@@ -84,7 +84,7 @@ namespace TestSources
         /// <summary>
         /// Reads the current file and returns a byte array of its content.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A byte array with the file contents</returns>
         public byte[] AsByteArray() =>
             this.AsByteArrayExt();
 
@@ -92,7 +92,7 @@ namespace TestSources
         /// Reads the current file and returns a FileStream to it
         /// </summary>
         /// <param name="testSourceFile"></param>
-        /// <returns></returns>
+        /// <returns>A file stream to the file contents</returns>
         public FileStream AsFileStream() =>
             this.AsFileStreamExt();
 
@@ -100,7 +100,7 @@ namespace TestSources
         /// Reads the current file and returns its contents as a MemoryStream
         /// </summary>
         /// <param name="testSourceFile"></param>
-        /// <returns></returns>
+        /// <returns>A memory stream to the file contents</returns>
         public MemoryStream AsMemoryStream() =>
             this.AsMemoryStreamExt();
 
@@ -108,7 +108,7 @@ namespace TestSources
         /// Reads the current file and returns its contents as a Stream
         /// </summary>
         /// <param name="testSourceFile"></param>
-        /// <returns></returns>
+        /// <returns>A stream to the file contents</returns>
         public Stream AsStream() =>
             this.AsStreamExt();
 
@@ -117,7 +117,7 @@ namespace TestSources
         /// </summary>
         /// <param name="testSourceFile"></param>
         /// <param name="hashAlgorithm"></param>
-        /// <returns></returns>
+        /// <returns>the file hash</returns>
         public string GetHash() =>
             this.GetHashExt();
 
@@ -125,9 +125,26 @@ namespace TestSources
         /// Returns the content of a file as a concrete type, deserializing its JSON content
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
+        /// <returns>The file contents as a type instance</returns>
         public T? AsType<T>() =>
             this.AsTypeExt<T>();
+
+        /// <summary>
+        /// Reads the current file and returns its content as a
+        /// JSON string with a default UTF8 encoding.
+        /// </summary>
+        /// <returns>The file contents as a Json string</returns>
+        public string AsJson() =>
+            this.AsJsonExt();
+
+        /// <summary>
+        /// Reads the current file and returns its content as a
+        /// JSON string with the provided encoding.
+        /// </summary>
+        /// <param name="encoding"></param>
+        /// <returns>The file contents as a Json string</returns>
+        public string AsJson(Encoding encoding) =>
+            this.AsJsonExt(encoding);
 
         #endregion As*** Methods
 

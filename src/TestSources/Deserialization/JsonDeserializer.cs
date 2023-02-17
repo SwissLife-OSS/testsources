@@ -37,8 +37,7 @@ internal class JsonDeserializer : IJsonDeserializer
 
     public T? Deserialize<T>(string jsonString)
     {
-        JsonLoadSettings jsonLoadSettings = JsonLoadSettings;
-        var isValidJson = jsonString.IsValidJsonFormat(jsonLoadSettings);
+        var isValidJson = IsValidJson(jsonString);
 
         if (!isValidJson)
         {
@@ -52,6 +51,13 @@ internal class JsonDeserializer : IJsonDeserializer
         T obj = JsonConvert.DeserializeObject<T>(jsonString, JsonSerializerSettings);
 
         return obj;
+    }
+
+    public static bool IsValidJson(string jsonString)
+    {
+        JsonLoadSettings jsonLoadSettings = JsonLoadSettings;
+        var isValidJson = jsonString.IsValidJsonFormat(jsonLoadSettings);
+        return isValidJson;
     }
 
     private class ChildFirstContractResolver : DefaultContractResolver

@@ -138,10 +138,6 @@ public class TestSourceFileExtensionsTests
         string fileName = "ComplexObject.txt";
 
         // Act
-        //string jsonString =
-        //    TestSource.GetFile(fileName, false)
-        //    .AsString();
-
         RootObject rootObj =
             TestSource.GetFile(fileName, false)
             .AsType<RootObject>();

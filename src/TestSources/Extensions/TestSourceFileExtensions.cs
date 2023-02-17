@@ -4,6 +4,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using TestSources.Deserialization;
+using TestSources.Exceptions;
 using TestSources.Interfaces;
 # nullable enable
 
@@ -78,6 +79,8 @@ namespace TestSources.Extensions
         {
             MemoryStream memoryStream = new MemoryStream();
             AsFileStreamExt(testSourceFile).CopyTo(memoryStream);
+            memoryStream.Position = 0;
+
             return memoryStream;
         }
 
@@ -129,5 +132,39 @@ namespace TestSources.Extensions
             }
         }
 
+        /// <summary>
+        /// Reads the current file and returns its content as a
+        /// JSON string with a default UTF8 encoding.
+        /// </summary>
+        /// <param name="testSourceFile"></param>     
+        /// <returns>The file contents as a Json string</returns>
+        public static string AsJsonExt(
+            this ITestSourceFile testSourceFile)
+        {
+            return AsJsonExt(testSourceFile, DefaultEncoding);
+        }
+
+        /// <summary>
+        /// Reads the current file and returns its content as a
+        /// JSON string with the provided encoding.
+        /// </summary>
+        /// <param name="testSourceFile"></param>     
+        /// <param name="encoding"></param>
+        /// <returns>The file contents as a Json string</returns>
+        public static string AsJsonExt(
+            this ITestSourceFile testSourceFile,
+            Encoding encoding)
+        {
+            string jsonContent = File.ReadAllText(testSourceFile.FullName, encoding);
+            bool isValidJson = JsonDeserializer.IsValidJson(jsonContent);
+
+            if (!isValidJson)
+            {
+                throw new TestSourcesValidationException(
+                    $"The file {testSourceFile.Name} failed its validation as a Json.");
+            }
+
+            return jsonContent;
+        }
     }
 }
