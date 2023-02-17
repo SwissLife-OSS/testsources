@@ -146,6 +146,42 @@ public class TestSourceFileExtensionsTests
         rootObj.MatchSnapshot();
     }
 
+    [Fact]
+    public void FileExtensionAsJson_Default_Succeeds()
+    {
+        // Arrange
+        string fileName = "SomeJson.json";
+
+        // Act
+        ITestSourceFile file = TestSource.GetFile(fileName, true);
+        string textInFile = file.AsString();
+
+        string fileContentsAsJsonString =
+            TestSource.GetFile(fileName, true)
+            .AsJson();
+
+        // Assert
+        fileContentsAsJsonString.Should().NotBeNullOrWhiteSpace();
+    }
+
+    [Fact]
+    public void FileExtensionAsJson_UTF16_Succeeds()
+    {
+        // Arrange
+        string fileName = "faceutf16.json";
+
+        // Act
+        ITestSourceFile file = TestSource.GetFile(fileName, true);
+        string textInFile = file.AsString();
+
+        string fileContentsAsJsonString =
+            TestSource.GetFile(fileName, true)
+            .AsJson();
+
+        // Assert
+        fileContentsAsJsonString.Should().NotBeNullOrWhiteSpace();
+    }
+
     public class GeoCoordinates
     {
         public double Longitude { get; set; }
