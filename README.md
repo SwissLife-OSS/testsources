@@ -3,7 +3,9 @@
 
 **TestSources is a test file management tool for _.NET Core_ and _.NET Framework_**
 
-_TestSources_ makes easy to handle, organize and use test files from a .NET test. It greatly simplifies the work of setting up file management tools, validations and access to them that you have to set up manually on every test project that manages files of any kind.
+_TestSources_ makes easy to handle, organize and use test files in a .NET test. 
+It greatly simplifies the usual work of having to set up a file management tool/code, implement validations and enable proper access to files and its contents... Those have to be set up manually on every test project that manages files of any kind, consuming time and repeating code. THAT IS EVIL.
+But no more, here is TestSources to help.
 
 
 ## Getting Started
