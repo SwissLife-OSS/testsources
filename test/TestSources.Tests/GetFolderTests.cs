@@ -20,6 +20,8 @@ public class GetFolderTests
         // Assert
         testSourcesDir.Should().NotBeNull();
         testSourcesDir.Name.Should().Be(folderName);
+        testSourcesDir.GetFiles().Should().HaveCount(2);
+        testSourcesDir.GetFolders().Should().HaveCount(0);
     }
 
     [Fact]
@@ -48,6 +50,8 @@ public class GetFolderTests
         // Assert
         testSourcesDir.Should().NotBeNull();
         testSourcesDir.Name.Should().Be(folderName);
+        testSourcesDir.GetFiles().Should().HaveCount(3);
+        testSourcesDir.GetFolders().Should().HaveCount(1);
     }
 
     [Fact]
