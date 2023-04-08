@@ -12,7 +12,7 @@ public class GetFileTests
     public void GetFile_FileInRoot_IsFoundByNameWithoutSubDirs()
     {
         // Arrange
-        string fileName = "BinFile01.rar";
+        string fileName = "BinFile02.rar";
 
         // Act
         ITestSourceFile testSourcesItem = TestSource.GetFile(fileName, false);
